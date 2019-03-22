@@ -4,6 +4,7 @@ import QuizLoop from "./pages/QuizLoop/QuizLoop";
 import Answered from "./pages/QuizLoop/Answered";
 import "./App.css";
 
+
 class App extends Component {
   render() {
     return (
