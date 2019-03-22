@@ -6,6 +6,7 @@ import "./App.css";
 import CorrectScore from "./pages/CorrectScore";
 import FinalRank from "./pages/FinalRank";
 
+
 class App extends Component {
   render() {
     return (
