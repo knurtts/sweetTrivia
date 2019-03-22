@@ -30,7 +30,7 @@ class FinalRank extends Component {
                         {/* SignOut Component */}
                         <div className="card blue">
                             <div className="card-content white-text" id="signoutCard">
-                            <a class="waves-effect waves-light btn-large">Sign Out</a>
+                            <a href class="waves-effect waves-light btn-large">Sign Out</a>
                             </div>
                         </div>
 
