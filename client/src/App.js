@@ -4,6 +4,8 @@ import QuizLoop from "./pages/QuizLoop/QuizLoop";
 import Answered from "./pages/QuizLoop/Answered";
 import Lobby from "./pages/Lobby/Lobby";
 import "./App.css";
+import CorrectScore from "./pages/CorrectScore";
+import FinalRank from "./pages/FinalRank";
 
 
 class App extends Component {
@@ -15,6 +17,8 @@ class App extends Component {
           <Route exact path="/quiz" component={QuizLoop} />
           <Route exact path="/answered" component={Answered} />
           <Route exact path="/lobby" component={Lobby} />
+          <Route exact path="/correctScore" component={CorrectScore} />
+          <Route exact path="/finalRank" component={FinalRank} />
         </div>
       </Router>
     )
