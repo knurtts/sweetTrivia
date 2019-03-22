@@ -24,7 +24,9 @@ app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-const syncOptions = { force: false };
+require("./routes/apiRoutes")(app);
+
+const syncOptions = { force: true };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
