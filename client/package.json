@@ -4,6 +4,7 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
+    "@material-ui/core": "^3.9.2",
     "materialize-css": "^1.0.0-rc.2",
     "npm-merge-driver": "^2.3.5",
     "react": "^16.6.3",
