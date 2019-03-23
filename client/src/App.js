@@ -5,6 +5,7 @@ import Answered from "./pages/QuizLoop/Answered";
 import "./App.css";
 import CorrectScore from "./pages/CorrectScore";
 import FinalRank from "./pages/FinalRank";
+import SignIn from "./pages/QuizLoop/SignIn";
 
 
 class App extends Component {
@@ -12,7 +13,8 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Route exact path="/" component={QuizLoop} />
+          <Route exact path="/" component={SignIn} />
+          <Route exact path="/signIn" component={SignIn} />
           <Route exact path="/quiz" component={QuizLoop} />
           <Route exact path="/answered" component={Answered} />
           <Route exact path="/correctScore" component={CorrectScore} />
