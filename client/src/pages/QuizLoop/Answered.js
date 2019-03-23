@@ -2,6 +2,8 @@ import React, {Component} from "react";
 import "./QuizLoop.css";
 import CountDownTest from "../../components/timer";
 
+
+
 class Answered extends Component {
 
     render() {
