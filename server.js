@@ -1,3 +1,6 @@
+
+require('dotenv').config();
+
 const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
@@ -21,7 +24,9 @@ app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-const syncOptions = { force: false };
+require("./routes/apiRoutes")(app);
+
+const syncOptions = { force: true };
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
