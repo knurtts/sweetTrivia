@@ -6,6 +6,10 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         type: DataTypes.INTEGER
       },
+      uID: {
+        type: DataTypes.STRING,
+        notEmpty: true
+      },
       firstname: {
         type: DataTypes.STRING,
         notEmpty: true
@@ -20,14 +24,7 @@ module.exports = (sequelize, DataTypes) => {
           isEmail: true
         }
       },
-      password: {
-        type: DataTypes.STRING,
-        allowNull: false
-      },
       lastLogin: {
-        type: DataTypes.DATE
-      },
-      startTime: {
         type: DataTypes.DATE
       },
       suite: {
@@ -41,7 +38,7 @@ module.exports = (sequelize, DataTypes) => {
       User.hasOne(models.Player, {
         // as: "userId",
         // foreignKey: "id",
-        onDelete: 'cascade'
+        onDelete: 'cascade' 
       });
     };
     return User;
