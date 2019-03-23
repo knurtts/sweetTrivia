@@ -37,7 +37,7 @@ class App extends Component {
       
       <Router>
         <div>
-          <Route exact path="/" component={Home} />
+          <Route exact path="/home" component={Home} />
           {/*<Route exact path="/quiz" component={QuizLoop} /> */}
           <ProtectedRoute authenticated={this.props.authenticated} path="/quiz" component={QuizLoop} />
           {/*<Route exact path="/answered" component={Answered} />*/}

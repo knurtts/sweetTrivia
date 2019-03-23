@@ -14,7 +14,7 @@ module.exports = (sequelize, DataTypes) => {
     Player.associate = (models) => {
         //pass id UP to User table
         Player.belongsTo(models.User, {
-            as: "playerId",
+            // as: "playerId",
             foreignKey: {
                 allowNull: false
             }
