@@ -22,7 +22,12 @@ class Login extends Component {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then((user) => {
+        // this.props.history.push('/');
         this.props.history.push('/lobby');
+        // this.props.history.push('/answered');
+        // this.props.history.push('/quiz');
+        // this.props.history.push('/correctScore');
+        // this.props.history.push('/finalRank');
       })
       .catch((error) => {
         this.setState({ error: error });

@@ -1,5 +1,6 @@
 import React, {Component} from "react";
-import "./QuizLoop/QuizLoop.css";
+import "./FinalRank.css";
+import LogOut from "../Auth/LogOut";
 
 
 class FinalRank extends Component {
@@ -11,7 +12,7 @@ class FinalRank extends Component {
                     <div className="col s12">
 
                         {/* Leaderboard Component */}
-                        <div><h1>Leaderboard</h1></div>
+                        <div id="leaderboard"><h1>Leaderboard</h1></div>
 
                         {/* GameRank Component */}
                         <div className="card blue">
@@ -27,12 +28,16 @@ class FinalRank extends Component {
 
                         <br/>
                         
-                        {/* SignOut Component */}
-                        <div className="card blue">
+                        {/* LogOut Component */}
+                        <div><h1><LogOut/></h1></div>
+
+                        {/* <div className="card blue">
                             <div className="card-content white-text" id="signoutCard">
                             <a href class="waves-effect waves-light btn-large">Sign Out</a>
                             </div>
-                        </div>
+                        </div> */}
+
+
 
                     </div>
                 </div>
