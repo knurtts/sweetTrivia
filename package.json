@@ -24,6 +24,7 @@
     "firebase": "^5.9.1",
     "if-env": "^1.0.4",
     "materialize-css": "^1.0.0-rc.2",
+    "mysql": "^2.16.0",
     "mysql2": "^1.6.5",
     "sequelize": "^5.1.0"
   }

@@ -1,10 +1,8 @@
 import React, {Component} from "react";
-import "./QuizLoop.css";
-import CountDownTest from "../../components/timer";
+import "./QuizLoop/QuizLoop.css";
 
 
-
-class Answered extends Component {
+class CorrectScore extends Component {
 
     render() {
         return (<>
@@ -12,27 +10,24 @@ class Answered extends Component {
                 <div className="row">
                     <div className="col s12">
 
-                        {/* Timer Component */}
-                        <div><h1><CountDownTest/></h1></div>
-
-                        {/* Question Card */}
+                        {/* User Answer Component */}
                         <div className="card blue">
-                            <div className="card-content white-text">
-                                <span className="card-title">
-                                    <h5>Question 1:</h5>
-                                </span>
-                                <p>
-                                    How much wood could a woodchuck chuck, if a woodchuck could chuck wood?
-                                </p>
+                            <div className="card-content white-text" id="answerCard">
+                                <span className="card-title"><h5>User Answer:</h5></span>
+                                <div className="card-panel yellow darken-4">
+                                    <span className="white-text">
+                                        The Duke
+                                    </span>
+                                </div>
                             </div>
                         </div>
 
                         <br/>
                         
-                        {/* Selected Question */}
+                        {/* Correct Answer Component */}
                         <div className="card blue">
-                            <div className="card-content white-text" id="answerCard">
-                                <span className="card-title"><h5>Your Answer:</h5></span>
+                            <div className="card-content white-text" id="correctAnswerCard">
+                                <span className="card-title"><h5>Correct Answer:</h5></span>
                                 <div className="card-panel yellow darken-4">
                                     <span className="white-text">
                                         7
@@ -54,4 +49,4 @@ class Answered extends Component {
     }
 }
 
-export default Answered;
+export default CorrectScore;
