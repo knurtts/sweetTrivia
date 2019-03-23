@@ -14,14 +14,12 @@ module.exports = (app) => {
         }).then((user) => {
             console.log(user);
             res.json(user);
-        }).catch((err) => {
-            console.log(err);
-        });
+        }).catch(err => console.log(err));
     });
 
     //get user
     app.get("/api/getuser/:uid", (req,res) => {
-        db.User.fineOne({uID: req.params.uid})
+        db.User.fineOne({uID: req.params.uid} || {id: req.params.uid})
             .then((user) => {
                 res.json(user);
             }).catch((err) => {
@@ -31,6 +29,40 @@ module.exports = (app) => {
 
     //get number of players in this game
         //get count of Player table
+    app.get("/api/getplayers", (req, res) => {
+        db.Player.findAll({})
+            .then((data) => {
+                res.json(data);
+            }).catch(err => console.log(err));
+    });
 
-    //get player ranks
+    //get leaderboard ranks
+    app.get("/api/leaderboards", (req, res) => {
+        db.Player.findAll({include: [User]})
+            .then(data => {
+                res.json(data);
+            }).catch(err => console.log(err));
+    });
+
+    //make new player
+    app.post("/api/newplayer/:game_id/:player_id", (req, res) => {
+        db.Player.create({
+            GameId: req.params.game_id,
+            UserId: req.params.player_id,
+            score: 0
+        }).then(data => res.json(data))
+            .catch(err => console.log(err));
+    });
+
+    //make new game
+    app.post("/api/newgame", (req, res) => {
+        db.Game.create({
+            gameDate: Date(),
+            active: true
+        }).then(data => res.json(data))
+            .catch(err => console.log(err));
+    });
+
+    
+
 };
