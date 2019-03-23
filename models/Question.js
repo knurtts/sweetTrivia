@@ -5,7 +5,7 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true,
             type: DataTypes.INTEGER
         },
-        questions: {
+        question: {
             type: DataTypes.TEXT
         }
     });

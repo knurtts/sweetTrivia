@@ -14,24 +14,10 @@ import FinalRank from './pages/FinalRank/FinalRank';
 import LogOut from './pages/Auth/LogOut';
 
 class Navigation extends Component {
-  render() {
-    return (
-      <Router>
-        <div>
-          
-              <NavLink to="/">Home</NavLink>
-              {this.props.authenticated ? (
-                <span>
-                  <NavLink to="/lobby">Lobby</NavLink>
-                  <LogOut />
-                </span>
-              ) : (
-                <span>
-                  <NavLink to="/login">Login</NavLink>
-                  <NavLink to="/register">Register</NavLink>
-                </span>
-              )}
-            
+ render() {
+   return (
+     <Router>
+       <div>
 
           <Switch>
             <Route exact path="/" component={Home} />
