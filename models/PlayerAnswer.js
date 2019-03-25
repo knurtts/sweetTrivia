@@ -29,6 +29,12 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false
             }
         });
+
+        PlayerAnswer.belongsTo(models.Answer, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
     }
 
     return PlayerAnswer;

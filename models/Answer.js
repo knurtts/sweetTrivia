@@ -21,6 +21,8 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false
             }
         });
+
+        Answer.hasMany(models.PlayerAnswer);
     };
 
     return Answer;
