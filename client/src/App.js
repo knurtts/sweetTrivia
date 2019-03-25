@@ -38,14 +38,14 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path="/home" component={Home} />
-          {/*<Route exact path="/quiz" component={QuizLoop} /> */}
-          <ProtectedRoute authenticated={this.props.authenticated} path="/quiz" component={QuizLoop} />
-          {/*<Route exact path="/answered" component={Answered} />*/}
+          <Route exact path="/quiz" component={QuizLoop} />
+          {/* <ProtectedRoute authenticated={this.props.authenticated} path="/quiz" component={QuizLoop} /> */}
+          {/* <Route exact path="/answered" component={Answered} /> */}
           <ProtectedRoute authenticated={this.props.authenticated} path="/answered" component={Answered} />
           <ProtectedRoute authenticated={this.props.authenticated} path="/lobby" component={Lobby} />
-          {/*<Route exact path="/correctScore" component={CorrectScore} />*/}
+          {/* <Route exact path="/correctScore" component={CorrectScore} /> */}
           <ProtectedRoute authenticated={this.props.authenticated} path="/correctScore" component={CorrectScore} />
-          {/*<Route exact path="/finalRank" component={FinalRank} />*/}
+          {/* <Route exact path="/finalRank" component={FinalRank} /> */}
           <ProtectedRoute authenticated={this.props.authenticated} path="/finalRank" component={FinalRank} />
           <Navigation authenticated={this.state.authenticated} />;
         </div>

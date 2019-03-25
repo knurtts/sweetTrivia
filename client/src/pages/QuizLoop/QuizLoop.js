@@ -1,7 +1,23 @@
 import React, {Component} from "react";
 import CountDownTest from "../../components/timer";
+import axios from "axios";
 
 class QuizLoop extends Component {
+    state = {
+        questions: []
+    };
+
+    getQuestion = () => {
+        axios.get("/api/getquestions").then((questions) => {
+                console.log(questions.data);
+            });
+    };
+
+    componentDidMount() {
+        this.getQuestion();
+    };
+
+
     render() {
         return (<>
             <div className="container">
@@ -12,16 +28,7 @@ class QuizLoop extends Component {
                         <div><h1><CountDownTest/></h1></div>
 
                         {/* Question Card */}
-                        <div className="card blue">
-                            <div className="card-content white-text">
-                                <span className="card-title">
-                                    <h4>Question 1:</h4>
-                                </span>
-                                <p>
-                                    How much wood could a woodchuck chuck, if a woodchuck could chuck wood?
-                                </p>
-                            </div>
-                        </div>
+                        
 
                         <br/>
                         
