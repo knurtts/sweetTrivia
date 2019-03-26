@@ -38,5 +38,25 @@ VALUES ("King Arthur of Camelot!", 1, 1),
 ("African or European?", 1, 3),
 ("Seven", 0, 3);
 
+INSERT INTO gamequestions (GameId, QuestionId)
+VALUES (1, 1),
+(1, 2),
+(1, 3);
+
 INSERT INTO playeranswers (GameId, PlayerId, GameQuestionId, AnswerId)
-VALUES ()
+VALUES (1, 1, 1, 1),
+(1, 1, 2, 3),
+(1, 1, 3, 1),
+
+(1, 2, 1, 4),
+(1, 2, 2, 2),
+(1, 2, 3, 3),
+
+(1, 3, 1, 2),
+(1, 3, 2, 1),
+(1, 3, 3, 3),
+
+(1, 4, 1, 3),
+(1, 4, 2, 3),
+(1, 4, 3, 3);
+
