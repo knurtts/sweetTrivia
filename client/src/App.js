@@ -6,8 +6,8 @@ import Answered from "./pages/QuizLoop/Answered";
 import Lobby from "./pages/Lobby/Lobby";
 import Login from "./pages/Auth/Login"
 import "./App.css";
-import CorrectScore from "./pages/CorrectScore";
-import FinalRank from "./pages/FinalRank";
+import CorrectScore from "./pages/CorrectScore/CorrectScore";
+import FinalRank from "./pages/FinalRank/FinalRank";
 import firebase from './firebase';
 import Navigation from './Navigation';
 import ProtectedRoute from './ProtectedRoute';
