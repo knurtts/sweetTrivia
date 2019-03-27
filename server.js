@@ -8,6 +8,9 @@ const app = express();
 
 const db = require('./models');
 
+const server = app.listen(PORT, function() {
+  console.log(`🌎 ==> API server now on port ${PORT}!`);
+});
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -26,6 +29,13 @@ app.get("*", function(req, res) {
 });
 
 
+const socket = require("socket.io");
+const io = socket(server);
+
+io.on("connection", (socket) => {
+  console.log("connection made", socket.id);
+});
+
 
 const syncOptions = { force: false };
 
@@ -36,7 +46,5 @@ if (process.env.NODE_ENV === 'test') {
 }
 
 db.sequelize.sync(syncOptions).then(() => {
-  app.listen(PORT, function() {
-    console.log(`🌎 ==> API server now on port ${PORT}!`);
-  });
+  server;
 });

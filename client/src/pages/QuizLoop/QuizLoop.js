@@ -1,8 +1,12 @@
 import React, {Component} from "react";
 import CountDownTest from "../../components/timer";
 import axios from "axios";
+import io from "socket.io-client";
+let socket = io(`http://localhost:3001`);
+
 
 class QuizLoop extends Component {
+    
     state = {
         questions: []
     };
@@ -13,9 +17,11 @@ class QuizLoop extends Component {
             });
     };
 
-    componentDidMount() {
-        this.getQuestion();
-    };
+    // componentDidMount() {
+    //     socket.on("event", data => {
+    //         console.log(data);
+    //     });
+    // };
 
 
     render() {
