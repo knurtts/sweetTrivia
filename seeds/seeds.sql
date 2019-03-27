@@ -1,3 +1,5 @@
+DROP DATABASE [IF EXISTS] gamedaytrivia_db;
+
 CREATE DATABASE gamedaytrivia_db;
 
 USE gamedaytrivia_db;
