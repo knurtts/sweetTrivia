@@ -1,0 +1,25 @@
+#answerCard {
+    padding: 3% 5% 3% 5%;
+    align-content: center;
+}
+#correctAnswerCard {
+    padding: 3% 5% 3% 5%;
+    align-content: center;
+}
+#timer {
+    padding: 3% 5% 3% 5%;
+    align-content: center;
+}
+#totalScore {
+    padding: 3% 5% 3% 5%;
+    align-content: center;
+    text-align: center;
+}
+#playerRank {
+    padding: 3% 5% 3% 5%;
+    align-content: center;
+    text-align: center;
+}
+/* #title{
+    align-content: center;
+} */

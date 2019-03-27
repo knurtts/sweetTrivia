@@ -42,8 +42,10 @@ class Answered extends Component {
                         </div>
 
                         <div className="col s8 push-s2">
+                            {/* Cumalitive Score */}
                             <h5 id="totalScore">Score: 45</h5>
                             <br />
+                            {/* Rank from total players */}
                             <h5 id="playerRank">Your Rank: 8</h5>
                         </div>
 

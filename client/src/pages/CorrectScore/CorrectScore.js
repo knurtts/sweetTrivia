@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import "./QuizLoop/QuizLoop.css";
-import CountDownTest from "../components/timer";
+import "./CorrectScore.css";
+import CountDownTest from "../../components/timer";
 
 
 class CorrectScore extends Component {
@@ -12,7 +12,7 @@ class CorrectScore extends Component {
                     <div className="col s12">
 
                         {/* Timer Component */}
-                        <div><h1><CountDownTest/></h1></div>
+                        <div id="timer"><h5><CountDownTest/></h5></div>
 
                         {/* User Answer Component */}
                         <div className="card blue">
@@ -39,10 +39,12 @@ class CorrectScore extends Component {
                                 </div>
                             </div>
                         </div>
-
+                        
                         <div className="col s8 push-s2">
+                            {/* Cumalitive Score */}
                             <h5 id="totalScore">Score: 45</h5>
                             <br />
+                            {/* Rank from total players */}
                             <h5 id="playerRank">Your Rank: 8</h5>
                         </div>
 
