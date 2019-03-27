@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-//import { Container, Flex, Box, Input, Button, Subhead, Text } from 'rebass';
 import firebase from '../../firebase';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import AppBar from 'material-ui/AppBar';
+import TextField from 'material-ui/TextField';
+import Paper from 'material-ui/Paper';
+import Card from 'material-ui/Card'
+import RaisedButton from 'material-ui/RaisedButton';
 
 class Register extends Component {
   state = {
@@ -29,7 +34,7 @@ class Register extends Component {
         console.log('FirstName: '+ firstName)
         console.log('LastName: ' + lastName)
 
-        this.props.history.push('/');
+        this.props.history.push('/Lobby');
       })
       .catch((error) => {
         this.setState({ error: error });
@@ -38,29 +43,43 @@ class Register extends Component {
   render() {
     const { email, password, firstName, lastName, error } = this.state;
     return (
-      <container>
-        
-            Register
-          
-        {error ? (
-          
-              <text>{error.message}</text>
-           
-        ) : null}
-        
+        <MuiThemeProvider>
+          <React.Fragment>
+            <AppBar position="static" color="inherit" title="Register" />
+          <Card>
             <form onSubmit={this.handleSubmit}>
-              <input type="text" name="firstName" placeholder="First Name" value={firstName} onChange={this.handleInputChange} />
-              <input type="text" name="lastName" placeholder="Last Name" value={lastName} onChange={this.handleInputChange} />
-              <input type="password" name="password" placeholder="Password" value={password} onChange={this.handleInputChange} />
-              <input type="text" name="email" placeholder="Email" value={email} onChange={this.handleInputChange} />
-              
-              
-              
-
-              <button waves='light' children="Register" />
+            <TextField hintText="Enter Your First Name" floatingLabelText="First Name"
+              type="text" name="firstName" value={firstName} onChange={this.handleInputChange} />
+           
+            <br/> 
+            <TextField hintText="Enter Your Last Name" floatingLabelText="Last Name"
+              type="text" name="lastName" value={lastName} onChange={this.handleInputChange} />
+             
+            <br/>
+            <TextField hintText="Enter A Password" floatingLabelText="Password"
+              type="password" name="password" value={password} onChange={this.handleInputChange} />
+            
+            <br/> 
+            <TextField hintText="Enter Your Email Address" floatingLabelText="Email Address"
+              type="text" name="email" value={email} onChange={this.handleInputChange} />
+            
+            <br/>  
             </form>
+            <RaisedButton
+            label= 'Log In'
+            primary={true}
+            onClick={this.handleSubmit}
+            style={StyleSheet.button}
+            />
+          </Card>
+            {error ? (
           
-      </container>
+          <text>{error.message}</text>
+       
+    ) : null}
+            </React.Fragment> 
+          </MuiThemeProvider>
+            
 
       
     );

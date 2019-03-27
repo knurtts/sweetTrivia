@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-//import { Container, Flex, Box, Input, Button, Subhead, Text } from 'rebass';
 import firebase from '../../firebase';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import AppBar from 'material-ui/AppBar';
+import TextField from 'material-ui/TextField';
+import Paper from 'material-ui/Paper';
+import Card from 'material-ui/Card'
+import RaisedButton from 'material-ui/RaisedButton';
 
 class Login extends Component {
   state = {
@@ -22,12 +27,7 @@ class Login extends Component {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then((user) => {
-        // this.props.history.push('/');
-        this.props.history.push('/lobby');
-        // this.props.history.push('/answered');
-        // this.props.history.push('/quiz');
-        // this.props.history.push('/correctScore');
-        // this.props.history.push('/finalRank');
+        this.props.history.push('/Lobby');
       })
       .catch((error) => {
         this.setState({ error: error });
@@ -36,30 +36,42 @@ class Login extends Component {
   render() {
     const { email, password, error } = this.state;
     return (
-      <container>
-        
-        <subhead>Log In</subhead>
-         
-        {error ? (
-          
-              <text>{error.message}</text>
-            
-        ) : null}
-        
+      <MuiThemeProvider>
+        <React.Fragment>
+          <AppBar position="static" color="inherit" title="Sign In" />
+          <Card>
             <form onSubmit={this.handleSubmit}>
-              <input type="text" name="email" placeholder="Email" value={email} onChange={this.handleInputChange} />
-              <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={password}
-                onChange={this.handleInputChange}
-              />
-              <button children="Log In" />
+            <TextField hintText="Enter Your Email Address" floatingLabelText="Email Address"
+              type="text" name="email" value={email} onChange={this.handleInputChange} />
+            
+            <br/>
+            <TextField hintText="Enter Your Password" floatingLabelText="Password"
+              type="password" name="password" value={password} onChange={this.handleInputChange} />
+            
+            <br/>
             </form>
+            
+          <RaisedButton
+            label= 'Log In'
+            primary={true}
+            onClick={this.handleSubmit}
+            style={StyleSheet.button}
+            />
+            </Card>
+            {error ? (
           
-      </container>
+          <text>{error.message}</text>
+        
+    ) : null}
+            </React.Fragment>    
+            </MuiThemeProvider>
     );
+  }
+}
+
+const styles = {
+  button: {
+    margin:15
   }
 }
 

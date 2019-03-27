@@ -4,6 +4,7 @@ import Home from "./pages/Home/Home";
 import QuizLoop from "./pages/QuizLoop/QuizLoop";
 import Answered from "./pages/QuizLoop/Answered";
 import Lobby from "./pages/Lobby/Lobby";
+import Login from "./pages/Auth/Login"
 import "./App.css";
 import CorrectScore from "./pages/CorrectScore/CorrectScore";
 import FinalRank from "./pages/FinalRank/FinalRank";
@@ -15,7 +16,7 @@ import ProtectedRoute from './ProtectedRoute';
 class App extends Component {
 
   state = {
-    authenticated: false,
+    // authenticated: false,
   };
 
   componentDidMount() {
@@ -38,15 +39,17 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path="/home" component={Home} />
-          {/*<Route exact path="/quiz" component={QuizLoop} /> */}
-          <ProtectedRoute authenticated={this.props.authenticated} path="/quiz" component={QuizLoop} />
-          {/*<Route exact path="/answered" component={Answered} />*/}
-          <ProtectedRoute authenticated={this.props.authenticated} path="/answered" component={Answered} />
-          <ProtectedRoute authenticated={this.props.authenticated} path="/lobby" component={Lobby} />
-          {/*<Route exact path="/correctScore" component={CorrectScore} />*/}
-          <ProtectedRoute authenticated={this.props.authenticated} path="/correctScore" component={CorrectScore} />
-          {/*<Route exact path="/finalRank" component={FinalRank} />*/}
-          <ProtectedRoute authenticated={this.props.authenticated} path="/finalRank" component={FinalRank} />
+          <Route exact path="/quiz" component={QuizLoop} />
+          <Route exact path="/lobby" component={Lobby} />
+          {/* <Route authenticated={this.props.authenticated} path="/lobby" component={() => this.props.authenticated ? <Lobby /> : <Login />} /> */}
+          {/* <Route authenticated={this.props.authenticated} path="/quiz" component={QuizLoop} /> */}
+          <Route exact path="/answered" component={Answered} />
+          {/* <ProtectedRoute authenticated={this.props.authenticated} path="/answered" component={Answered} /> */}
+          {/* <ProtectedRoute authenticated={this.props.authenticated} path="/lobby" component={Lobby} /> */}
+          <Route exact path="/correctScore" component={CorrectScore} />
+          {/* <ProtectedRoute authenticated={this.props.authenticated} path="/correctScore" component={CorrectScore} /> */}
+          <Route exact path="/finalRank" component={FinalRank} />
+          {/* <ProtectedRoute authenticated={this.props.authenticated} path="/finalRank" component={FinalRank} /> */}
           <Navigation authenticated={this.state.authenticated} />;
         </div>
       </Router>
