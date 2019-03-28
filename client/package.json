@@ -4,6 +4,9 @@
   "private": true,
   "proxy": "http://localhost:3001/",
   "dependencies": {
+    "@material-ui/core": "^3.9.2",
+    "axios": "^0.18.0",
+    "materialize-css": "^1.0.0-rc.2",
     "material-ui": "^0.20.2",
     "npm-merge-driver": "^2.3.5",
     "react": "^16.6.3",
@@ -11,6 +14,8 @@
     "react-dom": "^16.6.3",
     "react-router-dom": "^5.0.0",
     "react-scripts": "^2.1.1",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0",
     "typeface-roboto": "0.0.54"
   },
   "scripts": {
