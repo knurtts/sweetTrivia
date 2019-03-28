@@ -8,7 +8,6 @@ const app = express();
 
 const db = require('./models');
 
-
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
@@ -18,13 +17,25 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
 
+require("./routes/apiRoutes")(app);
 // Send every request to the React app
 // Define any API routes before this runs
 app.get("*", function(req, res) {
-  res.sendFile(path.join(__dirname, "./client/build/index.html"));
+  res.sendFile(path.join(__dirname, "./client/public/index.html"));
 });
 
-require("./routes/apiRoutes")(app);
+//Socket.io setup
+const http =  require("http").createServer();
+const io = module.exports = require("socket.io")(http, {origins: "*:*"});
+
+const SocketManager = require("./SocketManager");
+
+io.on("connection", SocketManager);
+
+http.listen(PORT, () => {
+  console.log("SOCKET CONNECTION MADE AT PORT: "+PORT);
+});
+
 
 const syncOptions = { force: false };
 

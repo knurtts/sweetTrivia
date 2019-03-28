@@ -23,11 +23,11 @@ class Navigation extends Component {
             <Route exact path="/" component={Home} />
             <Route authenticated={this.props.authenticated} path="/login" component={Login} />
             <Route path="/register" component={Register} />
-            <ProtectedRoute authenticated={this.props.authenticated} path="/lobby" component={Lobby} />
+            {/* <ProtectedRoute authenticated={this.props.authenticated} path="/lobby" component={Lobby} />
             <ProtectedRoute authenticated={this.props.authenticated} path="/quiz" component={QuizLoop} />
             <ProtectedRoute authenticated={this.props.authenticated} path="/answered" component={Answered} />
             <ProtectedRoute authenticated={this.props.authenticated} path="/correctScore" component={CorrectScore} />
-            <ProtectedRoute authenticated={this.props.authenticated} path="/finalRank" component={FinalRank} />
+            <ProtectedRoute authenticated={this.props.authenticated} path="/finalRank" component={FinalRank} /> */}
           </Switch>
         </div>
       </Router>
