@@ -20,6 +20,7 @@ app.use(express.static('public'));
 require("./routes/apiRoutes")(app);
 // Send every request to the React app
 // Define any API routes before this runs
+require("./routes/apiRoutes")(app);
 app.get("*", function(req, res) {
   res.sendFile(path.join(__dirname, "./client/public/index.html"));
 });
@@ -32,7 +33,7 @@ const SocketManager = require("./SocketManager");
 
 io.on("connection", SocketManager);
 
-http.listen(PORT, () => {
+http.listen(3002, () => {
   console.log("SOCKET CONNECTION MADE AT PORT: "+PORT);
 });
 
@@ -42,7 +43,7 @@ const syncOptions = { force: false };
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
 if (process.env.NODE_ENV === 'test') {
-  syncOptions.force = true;
+  syncOptions.force = false;
 }
 
 db.sequelize.sync(syncOptions).then(() => {
