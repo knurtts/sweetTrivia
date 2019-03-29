@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import firebase from '../../firebase';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import AppBar from 'material-ui/AppBar';
-import TextField from 'material-ui/TextField';
-import Paper from 'material-ui/Paper';
-import Card from 'material-ui/Card'
-import RaisedButton from 'material-ui/RaisedButton';
+import './Register.css';
 
 class Register extends Component {
   state = {
@@ -43,47 +38,53 @@ class Register extends Component {
   render() {
     const { email, password, firstName, lastName, error } = this.state;
     return (
-        <MuiThemeProvider>
-          <React.Fragment>
-            <AppBar position="static" color="inherit" title="Register" />
-          <Card>
+        <div>
+          <nav>
+            <div className="nav-wrapper">
+                <a href="#" className="brand-logo">Register</a>
+            </div>
+        </nav>
+        <br/> 
+        <div class="container">
+        <div className = "register"> 
             <form onSubmit={this.handleSubmit}>
-            <TextField hintText="Enter Your First Name" floatingLabelText="First Name"
-              type="text" name="firstName" value={firstName} onChange={this.handleInputChange} />
-           
-            <br/> 
-            <TextField hintText="Enter Your Last Name" floatingLabelText="Last Name"
-              type="text" name="lastName" value={lastName} onChange={this.handleInputChange} />
-             
-            <br/>
-            <TextField hintText="Enter A Password" floatingLabelText="Password"
-              type="password" name="password" value={password} onChange={this.handleInputChange} />
+        <div className="row">
+            <div className="input-field col s6">
+                <input type="text" name="firstName"  value={firstName} onChange={this.handleInputChange} />
+                <label for="firstName">First Name</label>
+            </div>
+        </div>
+            <div className="row">
+            <div className="input-field col s6">
+                <input type="text" name="lastName"  value={lastName} onChange={this.handleInputChange} />
+                <label for="lastName">Last Name</label>
+            </div>
+        </div>
+        <div className="row">
+            <div className="input-field col s6">
+                <input type="text" className="validate" name="email" value={email} onChange={this.handleInputChange} />
+                <label for="email">Email</label>
+            </div>
+        </div>
+        <div className="row">
+            <div className="input-field col s6">
+                <input type="password" className="validate" name="password"  value={password} onChange={this.handleInputChange} />
+                <label for="password">Password</label>  
+            </div>
+        </div> 
+            <button className="waves-effect waves-light btn-large" children="Register" />
+        </form>
+        </div>  
+
+        {error ? (
             
-            <br/> 
-            <TextField hintText="Enter Your Email Address" floatingLabelText="Email Address"
-              type="text" name="email" value={email} onChange={this.handleInputChange} />
-            
-            <br/>  
-            </form>
-            <RaisedButton
-            label= 'Log In'
-            primary={true}
-            onClick={this.handleSubmit}
-            style={StyleSheet.button}
-            />
-          </Card>
-            {error ? (
+        <text>{error.message}</text>
           
-          <text>{error.message}</text>
-       
-    ) : null}
-            </React.Fragment> 
-          </MuiThemeProvider>
-            
-
-      
-    );
-  }
-}
-
-export default withRouter(Register);
+      ) : null}   
+        
+        </div>
+          </div>
+      );
+    }
+   }
+   export default withRouter(Register);
