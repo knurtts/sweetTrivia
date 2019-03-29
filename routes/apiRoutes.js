@@ -1,8 +1,8 @@
 const db = require("../models");
-const axios = require("axios");
 
 module.exports = (app) => {
     //create new user
+
     app.post("/api/newuser", (req, res) => {
         db.User.create({
             uID: req.body.uID,
@@ -36,9 +36,26 @@ module.exports = (app) => {
             }).catch(err => console.log(err));
     });
 
+    //get start time of active game
+    app.get("/api/starttime", (req, res) => {
+        db.Game.findAll({
+            where:{
+                active: true
+            }
+        })
+            .then((data) => {
+                res.json(data);
+            }).catch(err => console.log(err));
+    });
+
     //get leaderboard ranks
     app.get("/api/leaderboards", (req, res) => {
-        db.Player.findAll({include: [User]})
+        db.Player.findAll({
+            include: [{
+                model: db.User,
+                required: true
+            }]
+        })
             .then(data => {
                 res.json(data);
             }).catch(err => console.log(err));

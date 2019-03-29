@@ -1,7 +1,46 @@
 import React, {Component} from "react";
 import CountDownTest from "../../components/timer";
+import axios from "axios";
+import io from "socket.io-client";
+
+const socketUrl = "http://localhost:3000";
 
 class QuizLoop extends Component {
+    
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            socket: null
+        }
+    }
+
+    componentDidMount() {
+        this.initSocket();
+    }
+
+    initSocket = () => {
+        const socket = io(socketUrl);
+
+        socket.on("connect", () => {
+            console.log("CONNECTED");
+        });
+
+        this.setState({socket});
+    }
+    
+    getQuestion = () => {
+        axios.get("/api/getquestions").then((questions) => {
+            console.log(questions.data);
+        });
+    };
+    
+    // componentDidMount() {
+    //     let socket = io("http://localhost:3001");
+    //     console.log("Connecting", socket);
+    // };
+
+
     render() {
         return (<>
             <div className="container">
@@ -12,16 +51,7 @@ class QuizLoop extends Component {
                         <div><h1><CountDownTest/></h1></div>
 
                         {/* Question Card */}
-                        <div className="card blue">
-                            <div className="card-content white-text">
-                                <span className="card-title">
-                                    <h4>Question 1:</h4>
-                                </span>
-                                <p>
-                                    How much wood could a woodchuck chuck, if a woodchuck could chuck wood?
-                                </p>
-                            </div>
-                        </div>
+                        
 
                         <br/>
                         
