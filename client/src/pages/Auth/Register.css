@@ -1,0 +1,67 @@
+
+h1{
+    font-family:BRONCOS;
+    color: #ff5200; 
+    font-style: italic;
+    
+}
+
+nav{
+    background-color:#0a2343;
+
+    
+}
+
+.btn-large{
+    background-color: #ff5200;
+    font-size: 20px; 
+    margin: 20px;
+    font-style:italic;
+    font-family:BRONCOS;
+    border-radius: 15px;
+    
+
+}
+
+.register{
+   
+    border-color: #0a2343;
+    border-radius: 5px;
+    
+
+}
+
+body{
+    background-position: center;
+    background-image: url("../../assets/images/Helmet.JPG");
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    
+}
+
+.brand-logo{
+    margin:5px;
+    font-family:BRONCOS;
+    font-style:italic;
+     
+    
+}
+
+.input-field{
+    font-family:BRONCOS;
+    font-style:italic;
+}
+
+.input-field input[type=text] + label,
+.input-field input[type=email]+ label,
+.input-field input[type=password] + label {
+    color: #ffffff;
+}
+
+.input-field input[type=text],
+.input-field input[type=email],
+.input-field input[type=password] {
+      border-bottom: 2px solid #ff5200;
+      box-shadow: none;
+    }
