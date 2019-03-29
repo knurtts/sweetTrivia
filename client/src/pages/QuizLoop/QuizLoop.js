@@ -3,7 +3,7 @@ import CountDownTest from "../../components/timer";
 import axios from "axios";
 import io from "socket.io-client";
 
-const socketUrl = "http://localhost:3000";
+const socketUrl = "http://localhost:3002";
 
 class QuizLoop extends Component {
     
