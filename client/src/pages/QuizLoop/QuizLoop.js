@@ -3,7 +3,7 @@ import CountDownTest from "../../components/timer";
 import axios from "axios";
 import io from "socket.io-client";
 
-const socketUrl = "http://localhost:3000";
+const socketUrl = "http://localhost:3002";
 
 class QuizLoop extends Component {
     
@@ -11,7 +11,8 @@ class QuizLoop extends Component {
         super(props);
 
         this.state = {
-            socket: null
+            socket: null,
+            question: null
         }
     }
 
@@ -28,17 +29,6 @@ class QuizLoop extends Component {
 
         this.setState({socket});
     }
-    
-    getQuestion = () => {
-        axios.get("/api/getquestions").then((questions) => {
-            console.log(questions.data);
-        });
-    };
-    
-    // componentDidMount() {
-    //     let socket = io("http://localhost:3001");
-    //     console.log("Connecting", socket);
-    // };
 
 
     render() {

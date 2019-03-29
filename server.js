@@ -33,7 +33,7 @@ const SocketManager = require("./SocketManager");
 
 io.on("connection", SocketManager);
 
-http.listen(PORT, () => {
+http.listen(3002, () => {
   console.log("SOCKET CONNECTION MADE AT PORT: "+PORT);
 });
 
