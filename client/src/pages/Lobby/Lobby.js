@@ -2,8 +2,22 @@ import React, {Component} from "react";
 //import "./components/timer.js"
 import "./Lobby.css";
 import CountDownTest from "../../components/timer.js";
+import axios from "axios";
+
 
 class Lobby extends Component {
+    state = {
+        players: []
+      }
+      componentDidMount() {
+
+        axios.get("/api/getplayers")
+        .then(res =>{
+            const players = res.data;
+            this.setState({players});
+        })
+    }
+
     render() {
         return (<>
             <div className="container">
@@ -22,7 +36,8 @@ class Lobby extends Component {
                                 <div className="card-panel yellow darken-4">
                                     <div className="white-text">
                                     {/* Player Count from DB */}
-                                        10
+                                    
+                                    {( {players} )}
                                     </div>
                                 </div>
                             </div>
