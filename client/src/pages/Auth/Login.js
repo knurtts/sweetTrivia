@@ -35,8 +35,17 @@ class Login extends Component {
       <div>
         <nav>
             <div className="nav-wrapper" >
-                <a href="#" className="brand-logo" center>Log In</a>
-            </div>
+                
+           
+
+           
+
+            <ul class="right waves-effect waves-light">
+      <li><a href="/">Home</a></li>
+      
+      
+    </ul>
+  </div>
         </nav>
         <br/>
         <div class="container">

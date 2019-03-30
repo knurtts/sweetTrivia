@@ -51,3 +51,4 @@ db.sequelize.sync(syncOptions).then(() => {
     console.log(`🌎 ==> API server now on port ${PORT}!`);
   });
 });
+//reset!

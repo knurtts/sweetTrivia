@@ -36,6 +36,13 @@ module.exports = (app) => {
             }).catch(err => console.log(err));
     });
 
+    app.get("/api/playercount", (req, res) => {
+        db.Player.findAndCountAll({})
+             .then((data) => {
+                res.json(data);
+             }).catch(err => console.log(err));
+     });
+
     //get start time of active game
     app.get("/api/starttime", (req, res) => {
         db.Game.findAll({
@@ -137,3 +144,4 @@ module.exports = (app) => {
             .catch(err => console.log(err));
     });
 };
+//reset
