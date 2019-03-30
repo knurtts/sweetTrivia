@@ -7,15 +7,19 @@ import axios from "axios";
 
 class Lobby extends Component {
     state = {
-        players: []
+        count: []
       }
       componentDidMount() {
 
-        axios.get("/api/getplayers")
+        axios.get("/api/playercount")
         .then(res =>{
-            const players = res.data;
-            this.setState({players});
+            const count = res.data.count;
+            this.setState( {
+                count
+            } );
+            console.log(this.state.count);
         })
+        
     }
 
     render() {
@@ -36,8 +40,7 @@ class Lobby extends Component {
                                 <div className="card-panel yellow darken-4">
                                     <div className="white-text">
                                     {/* Player Count from DB */}
-                                    
-                                    {( {players} )}
+                                    {this.state.count}
                                     </div>
                                 </div>
                             </div>
