@@ -1,0 +1,10 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+@font-face {
+  font-family: 'BRONCOS';
+  src: local('BRONCOS'), url(./assets/fonts/BRONCOS.TTF) format('ttf');
+}
