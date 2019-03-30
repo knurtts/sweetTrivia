@@ -2,6 +2,74 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  color: white !important;
+  
+}
+.input-field textarea:focus + label {
+  color: white !important;
+}
+
+.row .input-field textarea:focus {
+  border-bottom: 1px solid white !important;
+  box-shadow: 0 1px 0 0 white !important;
+}
+
+
+main {
+  flex: 1 0 auto;
+}
+.activator {
+ 
+    width: 100px; /* you can use % */
+    height: auto;
+}
+
+ /* label focus color */
+ .input-field input[type=text]:focus + label {
+  color: white !important;
+}
+/* label underline focus color */
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid  #FF5200 !important;
+  box-shadow: 0 1px 0 0  #FF5200 !important ;
+}
+
+ /* label focus color */
+ .input-field input[type=password]:focus + label {
+  color:  white !important;
+}
+/* label underline focus color */
+.input-field input[type=password]:focus {
+  border-bottom: 1px solid  #FF5200 !important;
+  box-shadow: 0 1px 0 0  #FF5200 !important ;
+}
+.prefix.active {
+  color: white !important;
+}
+ /* label focus color */
+ .input-field input[type=email]:focus + label {
+  color: white !important;
+}
+/* label underline focus color */
+.input-field input[type=email]:focus {
+  border-bottom: 1px solid white !important;
+  box-shadow: 0 1px 0 0 white !important ;
+}
+
+/* waves effect button color */
+.waves-effect.waves-orange .waves-ripple {
+  background-color:  #FF5200 !important;
+  }
+
+  .btn-large{
+    background-color: #ff5200 !important;
+    font-size: 20px; 
+    margin: 20px;
+    font-style:italic;
+    font-family:BRONCOS;
+    border-radius: 15px;
+    
+
 }
 
 @font-face {
