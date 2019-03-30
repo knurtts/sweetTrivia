@@ -72,7 +72,3 @@ main {
 
 }
 
-@font-face {
-  font-family: 'BRONCOS';
-  src: local('BRONCOS'), url(./assets/fonts/BRONCOS.TTF) format('ttf');
-}
