@@ -40,9 +40,18 @@ class Register extends Component {
     return (
         <div>
           <nav>
-            <div className="nav-wrapper">
-                <a href="#" className="brand-logo">Register</a>
-            </div>
+            <div className="nav-wrapper" >
+                
+           
+
+           
+
+            <ul class="right waves-effect waves-light">
+      <li><a href="/">Home</a></li>
+      
+      
+    </ul>
+  </div>
         </nav>
         <br/> 
         <div class="container">

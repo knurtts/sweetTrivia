@@ -40,6 +40,7 @@ class App extends Component {
       <Router>
         <div>
           <Route exact path="/home" component={Home} />
+          
           <Route exact path="/quiz" component={QuizLoop} />
           <Route exact path="/lobby" component={Lobby} />
           <Route exact path="/time" component={Time} />

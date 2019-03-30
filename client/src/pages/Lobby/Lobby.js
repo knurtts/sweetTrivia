@@ -5,6 +5,7 @@ import CountDownTest from "../../components/timer.js";
 import axios from "axios";
 
 
+
 class Lobby extends Component {
     state = {
         count: []
@@ -24,6 +25,26 @@ class Lobby extends Component {
 
     render() {
         return (<>
+      <nav>
+            <div className="nav-wrapper" >
+                
+           
+
+           
+
+            <ul class="right waves-effect waves-light">
+      <li><a href="/">Home</a></li>
+      <li>
+        <a href="/">Logout</a>
+        </li>
+      
+    </ul>
+  </div>
+        </nav>
+
+
+       
+
             <div className="container">
                 <div className="row">
                     <div className="col s12">
