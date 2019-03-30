@@ -38,10 +38,10 @@ module.exports = (app) => {
 
     app.get("/api/playercount", (req, res) => {
         db.Player.findAndCountAll({})
-             .then((data) => {
+            .then((data) => {
                 res.json(data);
-             }).catch(err => console.log(err));
-     });
+            }).catch(err => console.log(err));
+    });
 
     //get start time of active game
     app.get("/api/starttime", (req, res) => {
