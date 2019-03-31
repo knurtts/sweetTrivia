@@ -16,13 +16,18 @@ class QuizLoop extends Component {
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.initSocket();
+    }
+
+    componentDidMount() {
+        const { socket } = this.state;
+
+        socket.emit("userConnected")
     }
 
     initSocket = () => {
         const socket = io(socketUrl);
-
         socket.on("connect", () => {
             console.log("CONNECTED");
         });

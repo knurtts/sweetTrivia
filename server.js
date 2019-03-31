@@ -27,13 +27,14 @@ app.get("*", function(req, res) {
 
 //Socket.io setup
 const http =  require("http").createServer();
-const io = module.exports = require("socket.io")(http, {origins: "*:*"});
-
+const io = module.exports = require("socket.io")(http);
+const SocketPORT = process.env.PORT+1 || 3002;
 const SocketManager = require("./SocketManager");
+
 
 io.on("connection", SocketManager);
 
-http.listen(3002, () => {
+http.listen(SocketPORT, () => {
   console.log("SOCKET CONNECTION MADE AT PORT: "+PORT);
 });
 
