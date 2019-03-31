@@ -1,14 +1,17 @@
-const io = require("./server").io;
+const io = require("./server");
 const axios = require("axios");
-const express = require("express");
-const app = express();
 
-module.exports = function(socket) {
+
+module.exports = function(socket, PORT) {
     console.log("Socket ID: "+socket.id);
 
     socket.on("userConnected", () => {
+        let questions = []
         axios.get("http://localhost:3001/api/getquestions").then((qstns) => {
-            console.log(qstns);
+            questions = qstns.data;
+            console.log(questions);
+            // console.log(io);
+            io.emit("gotquestions", questions);
         }).catch(err => console.log(err));
     })
 };

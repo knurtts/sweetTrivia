@@ -24,6 +24,9 @@ class QuizLoop extends Component {
         const { socket } = this.state;
 
         socket.emit("userConnected")
+
+        this.getQuestions();
+
     }
 
     initSocket = () => {
@@ -35,6 +38,13 @@ class QuizLoop extends Component {
         this.setState({socket});
     }
 
+    getQuestions = () => {
+        const { socket } = this.state;
+        socket.on("gotquestions", (questions) => {
+            console.log(questions)
+        });
+    }
+    
 
     render() {
         return (<>
