@@ -38,7 +38,7 @@ http.listen(3002, () => {
 });
 
 
-const syncOptions = { force: false };
+const syncOptions = { force: false};
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`

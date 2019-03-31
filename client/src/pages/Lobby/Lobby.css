@@ -3,9 +3,11 @@
     align-content: center;
 }
 #timer {
-    padding: 3% 5% 3% 5%;
-    align-content: center;
+    color: white;
+    font-size: 80px;
 }
 #title{
     align-content: center;
 }
+
+

@@ -59,29 +59,29 @@ class Register extends Component {
             <form onSubmit={this.handleSubmit}>
         <div className="row">
             <div className="input-field col s6">
-                <input type="text" name="firstName"  value={firstName} onChange={this.handleInputChange} />
+                <input type="text" name="firstName" className="text white-text" value={firstName} onChange={this.handleInputChange} />
                 <label for="firstName">First Name</label>
             </div>
         </div>
             <div className="row">
             <div className="input-field col s6">
-                <input type="text" name="lastName"  value={lastName} onChange={this.handleInputChange} />
+                <input type="text" name="lastName"  className="text white-text" value={lastName} onChange={this.handleInputChange} />
                 <label for="lastName">Last Name</label>
             </div>
         </div>
         <div className="row">
             <div className="input-field col s6">
-                <input type="text" className="validate" name="email" value={email} onChange={this.handleInputChange} />
+                <input type="text" className="validate" name="email" className="text white-text" value={email} onChange={this.handleInputChange} />
                 <label for="email">Email</label>
             </div>
         </div>
         <div className="row">
             <div className="input-field col s6">
-                <input type="password" className="validate" name="password"  value={password} onChange={this.handleInputChange} />
+                <input type="password" className="validate" name="password" className="text white-text" value={password} onChange={this.handleInputChange} />
                 <label for="password">Password</label>  
             </div>
         </div> 
-            <button className="waves-effect waves-light btn-large" children="Register" />
+            <button className="waves-effect waves-orange btn-large" children="Register" />
         </form>
         </div>  
 

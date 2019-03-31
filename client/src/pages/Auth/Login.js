@@ -52,17 +52,17 @@ class Login extends Component {
             <form onSubmit={this.handleSubmit}>
             <div className="row">
               <div className="input-field col s6">
-                <input type="text" className="validate" name="email" value={email} onChange={this.handleInputChange} />
+                <input type="text" className="validate text white-text" name="email" value={email} onChange={this.handleInputChange} />
                 <label for="email">Email</label>
               </div>
             </div>
               <div className="row">
                 <div className="input-field col s6">
-                  <input type="password" name="password" value={password} onChange={this.handleInputChange} />
+                  <input type="password" name="password" className=" text white-text" value={password} onChange={this.handleInputChange} />
                   <label for="password">Password</label>  
               </div>
             </div>   
-              <button className="waves-effect waves-light btn-large" children="Log In" />
+              <button className="waves-effect waves-orange btn-large" children="Log In" />
             </form>
             {error ? (
          
