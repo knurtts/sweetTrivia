@@ -39,7 +39,7 @@ http.listen(SocketPORT, () => {
 });
 
 
-const syncOptions = { force: false };
+const syncOptions = { force: false};
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
@@ -52,3 +52,4 @@ db.sequelize.sync(syncOptions).then(() => {
     console.log(`🌎 ==> API server now on port ${PORT}!`);
   });
 });
+//reset!
