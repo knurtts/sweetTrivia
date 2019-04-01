@@ -19,17 +19,17 @@ class Home extends Component {
                         {/* Title */}
                         <div><h1>Game Day Trivia</h1></div>
 
-                        {/* SignIn Component */}
+                        {/* LogIn Component */}
                         <div className="">
                             <div className="card-content white-text" id="signoutIn">
-                            <a href="/login" class="waves-effect waves-light btn-large">Sign In</a>
+                            <a href="/login" class="waves-effect waves-orange btn-large">Log In</a>
                             </div>
                         </div>
 
                         {/* Register Component */}
                         <div className="">
                             <div className="card-content white-text" id="register">
-                            <a href="/register" class="waves-effect waves-light btn-large">Register</a>
+                            <a href="/register" class="waves-effect waves-orange btn-large">Register</a>
                             </div>
                         </div>
 

@@ -16,13 +16,21 @@ class QuizLoop extends Component {
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.initSocket();
+    }
+
+    componentDidMount() {
+        const { socket } = this.state;
+
+        socket.emit("userConnected")
+
+        this.getQuestions();
+
     }
 
     initSocket = () => {
         const socket = io(socketUrl);
-
         socket.on("connect", () => {
             console.log("CONNECTED");
         });
@@ -30,9 +38,33 @@ class QuizLoop extends Component {
         this.setState({socket});
     }
 
+    getQuestions = () => {
+        const { socket } = this.state;
+        socket.on("gotquestions", (questions) => {
+            console.log(questions)
+        });
+    }
+    
 
     render() {
         return (<>
+          <nav>
+            <div className="nav-wrapper" >
+                
+           
+
+           
+
+            <ul class="right waves-effect waves-light">
+      <li><a href="/">Home</a></li>
+      <li>
+        <a href="/">Logout</a>
+        </li>
+      
+    </ul>
+  </div>
+        </nav>
+        
             <div className="container">
                 <div className="row">
                     <div className="col s12">
