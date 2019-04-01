@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import firebase from '../../firebase';
 import './Register.css';
+import axios from 'axios';
+import { now } from 'moment';
 
 class Register extends Component {
   state = {
@@ -9,6 +11,7 @@ class Register extends Component {
     password: '',
     firstName: '',
     lastName: '',
+    userID: '',
     error: null,
   };
 
@@ -24,15 +27,34 @@ class Register extends Component {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((data) => {
-        console.log('uid',data.user.uid)
-        console.log('EmailAddress: ',data.user.email)
-        console.log('FirstName: '+ firstName)
-        console.log('LastName: ' + lastName)
+        const newUser={
+          uID:data.user.uid,
+          firstname:firstName,
+          lastname:lastName,
+          email:data.user.email,
+        }
+        // console.log('uid',data.user.uid)
+        // console.log('EmailAddress: ',data.user.email)
+        // console.log('FirstName: '+ firstName)
+        // console.log('LastName: ' + lastName)
 
+        console.log(newUser);
+        //Add users User to User table in SQL
+        axios.post('/api/newuser', newUser)
+        .then(res => {
+        this.setState({userID:res.data.id})
+        
+         
         this.props.history.push('/Lobby');
       })
       .catch((error) => {
         this.setState({ error: error });
+      });
+    })
+      .catch((error) => {
+        this.setState({ error: error });
+        console.log(this.setState({ error: error }));
+        
       });
   };
   render() {
@@ -40,16 +62,11 @@ class Register extends Component {
     return (
         <div>
           <nav>
-            <div className="nav-wrapper" >
-                
-           
-
-           
+            <div className="nav-wrapper" >  
 
             <ul class="right waves-effect waves-light">
       <li><a href="/">Home</a></li>
-      
-      
+
     </ul>
   </div>
         </nav>

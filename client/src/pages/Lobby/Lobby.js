@@ -7,6 +7,7 @@ class Lobby extends Component {
     state = {
       times: [],
       timeCount: '',
+      gameID: '',
     }
     timeFunction = (res) => {
         const times = res.data;
@@ -50,6 +51,7 @@ class Lobby extends Component {
           if (distance < 0) {
             clearInterval(interval);
             console.log("EXPIRED");
+            this.props.history.push('/quiz')
             this.setState({
                 timeCount:"Get Ready To Play!!"
                 
@@ -60,9 +62,12 @@ class Lobby extends Component {
     componentDidMount() {
       axios.get('/api/starttime')
         .then(res => {
+            
           //this.timeFunction(res)
             this.setState({
-                timer: this.timeFunction(res)
+                timer: this.timeFunction(res),
+                gameID: res.data[0].id,  //Add Game ID to State
+                
             })
           
         })
