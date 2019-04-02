@@ -23,7 +23,11 @@ class QuizLoop extends Component {
     componentDidMount() {
         const { socket } = this.state;
 
-        socket.emit("userConnected")
+        // socket.emit("userConnected")
+        axios.get("/api/getquestions")
+            .then(data => {
+                console.log("questions", data);
+            });
 
         this.getQuestions();
 
@@ -41,8 +45,9 @@ class QuizLoop extends Component {
     getQuestions = () => {
         const { socket } = this.state;
         socket.on("gotquestions", (questions) => {
-            console.log("Questions:",questions);
-            this.setState({questions});
+            // console.log("Questions:",questions);
+            console.log("placeholder");
+            // this.setState({questions});
         });
     }
     
