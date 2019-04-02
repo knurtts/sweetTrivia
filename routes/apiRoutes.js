@@ -19,7 +19,7 @@ module.exports = (app) => {
 
     //get user
     app.get("/api/getuser/:uid", (req,res) => {
-        db.User.fineOne({uID: req.params.uid} || {id: req.params.uid})
+        db.User.findOne({uID: req.params.uid} || {id: req.params.uid})
             .then((user) => {
                 res.json(user);
             }).catch((err) => {
