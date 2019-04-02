@@ -26,10 +26,6 @@ class FinalRank extends Component {
         return (<>
           <nav>
             <div className="nav-wrapper" >
-                
-           
-
-           
 
             <ul class="right waves-effect waves-light">
       <li><a href="/">Home</a></li>
@@ -90,8 +86,6 @@ class FinalRank extends Component {
                                 </p>
                             </div>
                         </div>
-
-                        <br/>
                         
                         
 
@@ -100,9 +94,6 @@ class FinalRank extends Component {
                             <a href class="waves-effect waves-light btn-large">Sign Out</a>
                             </div>
                         </div> */}
-
-
-
                     </div>
                 </div>
             </div>

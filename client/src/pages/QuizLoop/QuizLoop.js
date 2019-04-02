@@ -16,13 +16,21 @@ class QuizLoop extends Component {
         }
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.initSocket();
+    }
+
+    componentDidMount() {
+        const { socket } = this.state;
+
+        socket.emit("userConnected")
+
+        this.getQuestions();
+
     }
 
     initSocket = () => {
         const socket = io(socketUrl);
-
         socket.on("connect", () => {
             console.log("CONNECTED");
         });
@@ -30,23 +38,19 @@ class QuizLoop extends Component {
         this.setState({socket});
     }
 
+    getQuestions = () => {
+        const { socket } = this.state;
+        socket.on("gotquestions", (questions) => {
+            console.log(questions)
+        });
+    }
+    
 
     render() {
         return (<>
           <nav>
             <div className="nav-wrapper" >
-                
-           
-
-           
-
-            <ul class="right waves-effect waves-light">
-      <li><a href="/">Home</a></li>
-      <li>
-        <a href="/">Logout</a>
-        </li>
-      
-    </ul>
+            
   </div>
         </nav>
         
@@ -58,9 +62,17 @@ class QuizLoop extends Component {
                         <div><h1><CountDownTest/></h1></div>
 
                         {/* Question Card */}
-                        
+                        <div className="card blue">
+                            <div className="card-content white-text">
+                                <span className="card-title">
+                                    <h5>Question 1:</h5>
+                                </span>
+                                <p>
+                                    How much wood could a woodchuck chuck, if a woodchuck could chuck wood?
+                                </p>
+                            </div>
+                        </div>
 
-                        <br/>
                         
                         {/* Question Cards */}
                         <div className="card-panel yellow darken-4">
@@ -90,6 +102,7 @@ class QuizLoop extends Component {
                     </div>
                 </div>
             </div>
+            
         </>);
     }
 }

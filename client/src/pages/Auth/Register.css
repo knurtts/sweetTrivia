@@ -12,16 +12,7 @@ nav{
     
 }
 
-.btn-large{
-    background-color: #ff5200;
-    font-size: 20px; 
-    margin: 20px;
-    font-style:italic;
-    font-family:BRONCOS;
-    border-radius: 15px;
-    
 
-}
 
 .register{
    
@@ -32,10 +23,14 @@ nav{
 }
 
 body{
-    background-position: center;
+    
     background-image: url("../../assets/images/Helmet.JPG");
-    background-repeat: no-repeat;
     background-size: cover;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-position: center;
+
     
     
 }
