@@ -55,13 +55,7 @@ class QuizLoop extends Component {
 
            
 
-            <ul class="right waves-effect waves-light">
-      <li><a href="/">Home</a></li>
-      <li>
-        <a href="/">Logout</a>
-        </li>
-      
-    </ul>
+            
   </div>
         </nav>
         
@@ -105,6 +99,7 @@ class QuizLoop extends Component {
                     </div>
                 </div>
             </div>
+            
         </>);
     }
 }

@@ -14,16 +14,10 @@ class CorrectScore extends Component {
 
            
 
-            <ul class="right waves-effect waves-light">
-      <li><a href="/">Home</a></li>
-      <li>
-        <a href="/">Logout</a>
-        </li>
-      
-    </ul>
+          
   </div>
         </nav>
-        
+
             <div className="container">
                 <div className="row">
                     <div className="col s12">
