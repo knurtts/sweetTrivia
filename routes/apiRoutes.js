@@ -19,7 +19,7 @@ module.exports = (app) => {
 
     //get user
     app.get("/api/getuser/:uid", (req,res) => {
-        db.User.fineOne({uID: req.params.uid} || {id: req.params.uid})
+        db.User.findOne({uID: req.params.uid} || {id: req.params.uid})
             .then((user) => {
                 res.json(user);
             }).catch((err) => {
@@ -38,10 +38,10 @@ module.exports = (app) => {
 
     app.get("/api/playercount", (req, res) => {
         db.Player.findAndCountAll({})
-             .then((data) => {
+            .then((data) => {
                 res.json(data);
-             }).catch(err => console.log(err));
-     });
+            }).catch(err => console.log(err));
+    });
 
     //get start time of active game
     app.get("/api/starttime", (req, res) => {
