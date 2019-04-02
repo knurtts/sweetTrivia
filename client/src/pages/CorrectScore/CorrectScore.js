@@ -8,14 +8,7 @@ class CorrectScore extends Component {
     render() {
         return (<>
         <nav>
-            <div className="nav-wrapper" >
-                
-           
-
-           
-
-          
-  </div>
+            <div className="nav-wrapper" > </div>
         </nav>
 
             <div className="container">
@@ -37,7 +30,6 @@ class CorrectScore extends Component {
                             </div>
                         </div>
 
-                        <br/>
                         
                         {/* Correct Answer Component */}
                         <div className="card blue">
@@ -63,7 +55,7 @@ class CorrectScore extends Component {
                 </div>
             </div>
         </>);
-    }
-}
+    };
+};
 
 export default CorrectScore;
