@@ -8,6 +8,7 @@ class Lobby extends Component {
       times: [],
       timeCount: '',
       gameID: '',
+      count: [],
     }
     timeFunction = (res) => {
         const times = res.data;
@@ -60,23 +61,55 @@ class Lobby extends Component {
         }, 1000); 
     }
     componentDidMount() {
+        const userID = this.props.location.state.userID
+        console.log('UserID' + userID);
+        
+        
       axios.get('/api/starttime')
-        .then(res => {
-            
+        .then(res => { 
           //this.timeFunction(res)
             this.setState({
                 timer: this.timeFunction(res),
-                gameID: res.data[0].id,  //Add Game ID to State
-                
+                gameID: res.data[0].id,  //Add Game ID to State    
             })
-          
         })
         .catch(function (error) {
           console.log(error);
         })
-    }
-  
+         
+        /*axios.get("/api/playercount")
+        .then(res =>{
+            const count = res.data.count;
+            this.setState( {count} );
+            console.log(this.state.count);
+        })*/
+
+        //componentDidMount() {
+             this.timer = setInterval(()=> {
+                this.timer = null;
+                clearInterval(this.timer);
+                axios.get("/api/playercount")
+                .then(res =>{
+                    const count = res.data.count;
+                    this.setState( {count} );
+                    console.log(this.state.count);
+                });
+             }, 1000);
+        //}
+           
+        
+            }
+          
+        
     
+
+    
+
+        
+          
+    
+    
+          
         render() {
             return (<>
                 <div className="container">
@@ -91,7 +124,7 @@ class Lobby extends Component {
                                     <div className="">
                                         <div className="white-text">
                                         {/* Player Count from DB */}
-                                            10
+                                        {this.state.count}
                                         </div>
                                     </div>
                                 </div>

@@ -1,10 +1,11 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
   color: white !important;
   
 }
+
+
 .input-field textarea:focus + label {
   color: white !important;
 }
@@ -71,4 +72,13 @@ main {
     
 
 }
+
+.yellow.darken-4 {
+  background-color: #FF5200 !important;
+}
+
+.card {
+  background-color: #0A2343 !important;
+}
+
 
