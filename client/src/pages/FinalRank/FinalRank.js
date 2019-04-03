@@ -11,7 +11,9 @@ class FinalRank extends Component {
         super(props)
         this.state = {
             users: []
-        }
+            // sortDirection: "descending",
+            // data: this.state.data.sort(descending)
+        };
     }
 
     componentDidMount() {
@@ -21,6 +23,20 @@ class FinalRank extends Component {
             this.setState({ users });
           })
       }
+
+    //   sortData() {
+    //       if(this.state.sortDirection === "descending") {
+    //           this.setState({
+    //               sortDirection: "ascending",
+    //               data: this.props.score.sort(sortAscending)
+    //           });
+    //       } else {
+    //           this.setState({
+    //               sortDirection: "descending",
+    //               data: this.props.score.sort(sortDescending)
+    //           });
+    //       }
+    //   }
 
     render() {
         return (<>
