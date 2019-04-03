@@ -9,7 +9,8 @@ class Lobby extends Component {
       timeCount: '',
       gameID: '',
       count: [],
-    }
+    };
+
     timeFunction = (res) => {
         const times = res.data;
         this.setState({ times });
@@ -17,10 +18,10 @@ class Lobby extends Component {
 
       //Format the data returned form SQL in a MM/DD/YYY format with 24hr time
        const dateFormat = moment.utc(startTime).format('L HH:mm:ss');
-
+        
        //convert string to date time
        const newDate = new Date(dateFormat);
-
+      
        //convert date time to milliseconds
        const countDownDate = newDate.getTime();
         
@@ -62,12 +63,12 @@ class Lobby extends Component {
     }
     componentDidMount() {
         const userID = this.props.location.state.userID
-        console.log('UserID' + userID);
-        
-        
+        console.log('UserID' + userID); 
       axios.get('/api/starttime')
         .then(res => { 
           //this.timeFunction(res)
+          console.log(res.data[0].id);
+          
             this.setState({
                 timer: this.timeFunction(res),
                 gameID: res.data[0].id,  //Add Game ID to State    
@@ -100,15 +101,9 @@ class Lobby extends Component {
         
             }
           
-        
-    
-
-    
-
-        
+   
           
-    
-    
+ 
           
         render() {
             return (<>
