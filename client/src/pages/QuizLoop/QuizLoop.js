@@ -3,6 +3,7 @@ import CountDownTest from "../../components/timer";
 import axios from "axios";
 import io from "socket.io-client";
 
+// const socketUrl = "https://gamedaytrivia.herokuapp.com";
 const socketUrl = "http://localhost:3001";
 
 class QuizLoop extends Component {
@@ -44,6 +45,18 @@ class QuizLoop extends Component {
             console.log("Questions:",questions);
             this.setState({questions});
         });
+
+        socket.on("answerscreen", () => {
+            console.log("Answer signal...");
+        });
+
+        socket.on("nextquestion", () => {
+            console.log("Question signal...")
+        });
+
+        socket.on("gotoleaderboards", () => {
+            console.log("End of game");
+        });
     }
     
 
@@ -65,7 +78,7 @@ class QuizLoop extends Component {
                     <div className="col s12">
 
                         {/* Timer Component */}
-                        <div><h1><CountDownTest/></h1></div>
+                        <div><h1><CountDownTest socket={this.state.socket}/></h1></div>
 
                         {/* Question Card */}
                         

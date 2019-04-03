@@ -33,20 +33,20 @@ const io = module.exports = require("socket.io")(http);
 const SocketManager = require("./SocketManager");
 
 
-// io.on("connection", SocketManager);
+io.on("connection", SocketManager);
 
-io.on("connection", function(socket) {
-  console.log("Socket ID: "+socket.id);
+// io.on("connection", function(socket) {
+//   console.log("Socket ID: "+socket.id);
 
-  socket.on("userConnected", () => {
-      let questions = [];
-      axios.get("/api/getquestions").then((qstns) => {
-          questions = qstns.data;
+//   socket.on("userConnected", () => {
+//       let questions = [];
+//       axios.get("/api/getquestions").then((qstns) => {
+//           questions = qstns.data;
           
-          io.emit("gotquestions", questions);
-      }).catch(err => console.log(err));
-  });
-});
+//           io.emit("gotquestions", questions);
+//       }).catch(err => console.log(err));
+//   });
+// });
 
 
 const syncOptions = { force: false};
