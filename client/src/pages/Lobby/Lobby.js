@@ -60,7 +60,8 @@ class Lobby extends Component {
           }
         }, 1000); 
     }
-    componentDidMount() {
+
+     componentDidMount() {
       axios.get('/api/starttime')
         .then(res => {
             
@@ -75,24 +76,40 @@ class Lobby extends Component {
         .catch(function (error) {
           console.log(error);
         })
-    }
-      componentDidMount() {
-
-        axios.get("/api/playercount")
+         
+        /*axios.get("/api/playercount")
         .then(res =>{
             const count = res.data.count;
             this.setState( {count} );
             console.log(this.state.count);
-        })
+        })*/
+
+        //componentDidMount() {
+             this.timer = setInterval(()=> {
+                this.timer = null;
+                clearInterval(this.timer);
+                axios.get("/api/playercount")
+                .then(res =>{
+                    const count = res.data.count;
+                    this.setState( {count} );
+                    console.log(this.state.count);
+                });
+             }, 1000);
+        //}
+           
         
-        //this.fetchCount().then(this.refreshCount)
-    }
-        setNewUser = UserID =>{
-            this.updateCount({UserID}).then(this.refreshCount) 
-        }
-    refreshCount = res=>
-    this.setState({count: res.data.count})
+            }
+          
+        
     
+
+    
+
+        
+          
+    
+    
+          
         render() {
             return (<>
                 <div className="container">
