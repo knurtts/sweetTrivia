@@ -8,6 +8,7 @@ class Lobby extends Component {
       times: [],
       timeCount: '',
       gameID: '',
+      count: [],
     }
     timeFunction = (res) => {
         const times = res.data;
@@ -59,7 +60,8 @@ class Lobby extends Component {
           }
         }, 1000); 
     }
-    componentDidMount() {
+
+     componentDidMount() {
       axios.get('/api/starttime')
         .then(res => {
             
@@ -74,9 +76,40 @@ class Lobby extends Component {
         .catch(function (error) {
           console.log(error);
         })
-    }
-  
+         
+        /*axios.get("/api/playercount")
+        .then(res =>{
+            const count = res.data.count;
+            this.setState( {count} );
+            console.log(this.state.count);
+        })*/
+
+        //componentDidMount() {
+             this.timer = setInterval(()=> {
+                this.timer = null;
+                clearInterval(this.timer);
+                axios.get("/api/playercount")
+                .then(res =>{
+                    const count = res.data.count;
+                    this.setState( {count} );
+                    console.log(this.state.count);
+                });
+             }, 1000);
+        //}
+           
+        
+            }
+          
+        
     
+
+    
+
+        
+          
+    
+    
+          
         render() {
             return (<>
                 <div className="container">
@@ -91,7 +124,7 @@ class Lobby extends Component {
                                     <div className="">
                                         <div className="white-text">
                                         {/* Player Count from DB */}
-                                            10
+                                        {this.state.count}
                                         </div>
                                     </div>
                                 </div>
