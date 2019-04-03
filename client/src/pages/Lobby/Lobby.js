@@ -8,6 +8,7 @@ class Lobby extends Component {
       times: [],
       timeCount: '',
       gameID: '',
+      count: [],
     }
     timeFunction = (res) => {
         const times = res.data;
@@ -75,7 +76,22 @@ class Lobby extends Component {
           console.log(error);
         })
     }
-  
+      componentDidMount() {
+
+        axios.get("/api/playercount")
+        .then(res =>{
+            const count = res.data.count;
+            this.setState( {count} );
+            console.log(this.state.count);
+        })
+        
+        //this.fetchCount().then(this.refreshCount)
+    }
+        setNewUser = UserID =>{
+            this.updateCount({UserID}).then(this.refreshCount) 
+        }
+    refreshCount = res=>
+    this.setState({count: res.data.count})
     
         render() {
             return (<>
@@ -91,7 +107,7 @@ class Lobby extends Component {
                                     <div className="">
                                         <div className="white-text">
                                         {/* Player Count from DB */}
-                                            10
+                                        {this.state.count}
                                         </div>
                                     </div>
                                 </div>
