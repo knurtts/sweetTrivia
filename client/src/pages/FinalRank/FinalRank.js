@@ -79,8 +79,8 @@ class FinalRank extends Component {
                                         <tbody>
                                         {this.state.users.map(user =>
                                             <tr key={user.id}>
-                                            <td>{user.score} </td>
                                             <td>{user.User.firstname}{user.User.lastname}</td>
+                                            <td>{user.score} </td>
                                             <td>{user.overallRank}</td>
                                             </tr>
                                         )}

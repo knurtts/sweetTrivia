@@ -4,10 +4,21 @@ CREATE DATABASE gamedaytrivia_db;
 
 USE gamedaytrivia_db;
 
-CREATE TABLE users(uID VARCHAR(100), 
-firstname VARCHAR(100), 
-lastname VARCHAR(100),
-score INT(11) NOT NULL);
+-- CREATE TABLE users(uID VARCHAR(100), 
+-- firstname VARCHAR(100), 
+-- lastname VARCHAR(100),
+-- email VARCHAR(100),
+-- lastLogin TIMESTAMP,
+-- suite INT (4) NOT NULL);
+
+-- games(gameDate TIMESTAMP('1970-01-01 00:00:01'),
+-- active INT(1) NOT NULL,
+-- startTime TIMESTAMP('1970-01-01 00:00:01');
+
+-- players(score INT(100) NOT NULL,
+-- GameID VARCHAR(100),
+-- UserId VARCHAR(100);
+
 
 INSERT INTO users(uID, firstname, lastname, email, lastLogin, suite)
 VALUES ("asdf1231", "Kyle", "Clark", "garpotrog@test.com", 0000-00-00, 322),
