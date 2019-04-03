@@ -60,18 +60,18 @@ class Lobby extends Component {
           }
         }, 1000); 
     }
-
-     componentDidMount() {
+    componentDidMount() {
+        const userID = this.props.location.state.userID
+        console.log('UserID' + userID);
+        
+        
       axios.get('/api/starttime')
-        .then(res => {
-            
+        .then(res => { 
           //this.timeFunction(res)
             this.setState({
                 timer: this.timeFunction(res),
-                gameID: res.data[0].id,  //Add Game ID to State
-                
+                gameID: res.data[0].id,  //Add Game ID to State    
             })
-          
         })
         .catch(function (error) {
           console.log(error);

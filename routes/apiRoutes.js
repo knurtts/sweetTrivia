@@ -55,6 +55,18 @@ module.exports = (app) => {
             }).catch(err => console.log(err));
     });
 
+    //get start time of active game
+    app.get("/api/gameid", (req, res) => {
+        db.Game.findAll({
+            where:{
+                active: true
+            }
+        })
+            .then((data) => {
+                res.json(data);
+            }).catch(err => console.log(err));
+    });
+
     //get leaderboard ranks
     app.get("/api/leaderboards", (req, res) => {
         db.Player.findAll({
@@ -69,10 +81,10 @@ module.exports = (app) => {
     });
 
     //make new player
-    app.post("/api/newplayer/:game_id/:player_id", (req, res) => {
+    app.post("/api/newplayer/:user_id/:game_id", (req, res) => {
         db.Player.create({
             GameId: req.params.game_id,
-            UserId: req.params.player_id,
+            UserId: req.params.user_id,
             score: 0
         }).then(data => res.json(data))
             .catch(err => console.log(err));
