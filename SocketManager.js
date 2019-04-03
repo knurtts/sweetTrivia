@@ -1,16 +1,6 @@
 const io = require("./server");
 const axios = require("axios");
 
-answerWait = () => {
-    setTimeout(() => {
-        io.emit("nextquestion")
-    }, 1000);
-}
-
-nextQuestion = () => {
-    io.emit("answerscreen");
-    answerWait();
-}
 
 module.exports = function(socket) {
     console.log("Socket ID: "+socket.id);
@@ -22,30 +12,25 @@ module.exports = function(socket) {
             
             io.emit("gotquestions", questions);
 
-            //start timer 20 seconds
-            let countdown = 0;
+            io.emit("nextquestion");
+
+            let count = 0;
             
-            setInterval(() => {
-                nextQuestion();
+            nextQuestion = () => {
+                io.emit("nextquestion");
 
-                countdown++;
+                count++;
 
-                if (countdown === 3) {
-                    io.emit("gotoleaderboards"); 
-                } else {
-                    nextQuestion();
+                if (count === 5) {
+                    clearInterval(questionTimer);
+                    setTimeout(() => {
+                        io.emit("gotoleaderboards");
+                    }, 15000);
                 }
-            }, 2000);
-            
-            
+            }
 
-            //after 20 seconds emit signal for answer page
+            let questionTimer = setInterval(nextQuestion, 5000);
 
-            //start timer for 10 seconds
-
-            //repeat 3 times
-
-            //send signal to go to leader boards
 
         }).catch(err => console.log(err));
     })

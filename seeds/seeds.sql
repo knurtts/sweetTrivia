@@ -1,4 +1,4 @@
-DROP DATABASE [IF EXISTS] gamedaytrivia_db;
+DROP DATABASE IF EXISTS gamedaytrivia_db;
 
 CREATE DATABASE gamedaytrivia_db;
 

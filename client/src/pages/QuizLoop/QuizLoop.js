@@ -18,7 +18,7 @@ class QuizLoop extends Component {
             socket: null,
             counter: 0,
           questionId: 1,
-          question: '',
+          questions: [],
           answerOptions: [],
           answer: '',
           answersCount: {
@@ -44,14 +44,9 @@ class QuizLoop extends Component {
     componentDidMount() {
         const { socket } = this.state;
 
-        // socket.emit("userConnected")
-        axios.get("/api/getquestions")
-            .then(data => {
-                console.log("questions", data);
-            });
+        socket.emit("userConnected")
 
         this.getQuestions();
-
     }
 
     initSocket = () => {
@@ -66,21 +61,29 @@ class QuizLoop extends Component {
     getQuestions = () => {
         const { socket } = this.state;
         socket.on("gotquestions", (questions) => {
-            // console.log("Questions:",questions);
-            console.log("placeholder");
-            // this.setState({questions});
+            console.log("Questions:",questions);
+            this.setState({questions});
         });
 
-        socket.on("answerscreen", () => {
-            console.log("Answer signal...");
-        });
+
+        let i = 0;
 
         socket.on("nextquestion", () => {
-            console.log("Question signal...")
+            let quest = this.state.questions;
+            console.log("Question signal...");
+            console.log(quest[i]);
+            
+            let apiPath = "/api/getanswers/"+quest[i].id
+            
+            axios.get(apiPath).then((answ) => {
+                console.log(answ.data);
+            });
+            i++;
         });
 
         socket.on("gotoleaderboards", () => {
             console.log("End of game");
+            //redirect to leaderboard page
         });
     }
 

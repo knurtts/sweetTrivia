@@ -126,7 +126,7 @@ module.exports = (app) => {
 
     //get answers for a question
     app.get("/api/getanswers/:question_id", (req, res) => {
-        db.Answer.findAll({QuestionId: req.params.question_id})
+        db.Answer.findAll({where: {QuestionId: req.params.question_id}})
             .then(data => res.json(data))
             .catch(err => console.log(err));
     });
