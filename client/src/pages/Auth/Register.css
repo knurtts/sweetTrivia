@@ -23,10 +23,14 @@ nav{
 }
 
 body{
-    background-position: center;
+    
     background-image: url("../../assets/images/Helmet.JPG");
-    background-repeat: no-repeat;
     background-size: cover;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-position: center;
+
     
     
 }
