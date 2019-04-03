@@ -1,8 +1,9 @@
 import React, {Component} from "react";
 import "./FinalRank.css";
 import LogOut from "../Auth/LogOut";
+import axios from 'axios';
 
-// const db = require("../models");
+
 
 class FinalRank extends Component {
 
@@ -10,24 +11,32 @@ class FinalRank extends Component {
         super(props)
         this.state = {
             users: []
-        }
+            // sortDirection: "descending",
+            // data: this.state.data.sort(descending)
+        };
     }
 
     componentDidMount() {
-        let self = this;
-        fetch('/users', {
-            method: 'GET'
-        }).then(function(response) {
-            if (response.status >= 400) {
-                throw new Error("Bad response from server");
-            }
-            return response.json();
-        }).then(function(data) {
-            self.setState({users: data});
-        }).catch(err => {
-        console.log('caught it!',err);
-        })
-    }
+        axios.get("/api/leaderboards")
+          .then(res => {
+            const users = res.data;
+            this.setState({ users });
+          })
+      }
+
+    //   sortData() {
+    //       if(this.state.sortDirection === "descending") {
+    //           this.setState({
+    //               sortDirection: "ascending",
+    //               data: this.props.score.sort(sortAscending)
+    //           });
+    //       } else {
+    //           this.setState({
+    //               sortDirection: "descending",
+    //               data: this.props.score.sort(sortDescending)
+    //           });
+    //       }
+    //   }
 
     render() {
         return (<>
@@ -55,20 +64,15 @@ class FinalRank extends Component {
                                     <div id="leaderboard"><h1>Leaderboard</h1></div>
                                 </span>
                                 {/* Display all players */}
-                                {/* app.get('/players', (request, response) => {
-                                pool.query('SELECT * FROM users', (error, result) => {
-                                if (error) throw error;
- 
-                                response.send(result);
-                                });
-                        }); */}
+                                <ul>
+                                    { this.state.users.map(user => <li>{user.name}</li>)}
+                                </ul>
                                 <div className="panel panel-default p50 uth-panel">
                                     <table className="table table-hover">
                                         <thead>
                                             <tr>
-                                                <th>User ID</th>
+                                                <th>Name</th>
                                                 <th>Total Score</th>
-                                                <th>Suite Rank</th>
                                                 <th>Overall Rank</th>
                                             </tr>
                                         </thead>
@@ -76,7 +80,7 @@ class FinalRank extends Component {
                                         {this.state.users.map(user =>
                                             <tr key={user.id}>
                                             <td>{user.score} </td>
-                                            <td>{user.rank}</td>
+                                            <td>{user.User.firstname}{user.User.lastname}</td>
                                             <td>{user.overallRank}</td>
                                             </tr>
                                         )}

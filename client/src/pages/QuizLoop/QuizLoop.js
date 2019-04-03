@@ -6,7 +6,8 @@ import quizQuestions from '../../api/quizQuestions';
 import Quiz from "../../components/Quiz";
 import Result from "../../components/Result";
 
-const socketUrl = "http://localhost:3002";
+// const socketUrl = "https://gamedaytrivia.herokuapp.com";
+const socketUrl = "http://localhost:3001";
 
 class QuizLoop extends Component {
     
@@ -43,7 +44,11 @@ class QuizLoop extends Component {
     componentDidMount() {
         const { socket } = this.state;
 
-        socket.emit("userConnected")
+        // socket.emit("userConnected")
+        axios.get("/api/getquestions")
+            .then(data => {
+                console.log("questions", data);
+            });
 
         this.getQuestions();
 
@@ -61,7 +66,21 @@ class QuizLoop extends Component {
     getQuestions = () => {
         const { socket } = this.state;
         socket.on("gotquestions", (questions) => {
-            console.log(questions)
+            // console.log("Questions:",questions);
+            console.log("placeholder");
+            // this.setState({questions});
+        });
+
+        socket.on("answerscreen", () => {
+            console.log("Answer signal...");
+        });
+
+        socket.on("nextquestion", () => {
+            console.log("Question signal...")
+        });
+
+        socket.on("gotoleaderboards", () => {
+            console.log("End of game");
         });
     }
 
@@ -159,6 +178,9 @@ class QuizLoop extends Component {
             
   </div>
         </nav>
+
+           {/* Timer Component */}
+           <div><h1><CountDownTest/></h1></div>
         
         {this.state.result ? this.renderResult() : this.renderQuiz()}  
 

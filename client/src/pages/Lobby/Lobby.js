@@ -61,38 +61,55 @@ class Lobby extends Component {
         }, 1000); 
     }
     componentDidMount() {
+        const userID = this.props.location.state.userID
+        console.log('UserID' + userID);
+        
+        
       axios.get('/api/starttime')
-        .then(res => {
-            
+        .then(res => { 
           //this.timeFunction(res)
             this.setState({
                 timer: this.timeFunction(res),
-                gameID: res.data[0].id,  //Add Game ID to State
-                
+                gameID: res.data[0].id,  //Add Game ID to State    
             })
-          
         })
         .catch(function (error) {
           console.log(error);
         })
-    }
-      componentDidMount() {
-
-        axios.get("/api/playercount")
+         
+        /*axios.get("/api/playercount")
         .then(res =>{
             const count = res.data.count;
             this.setState( {count} );
             console.log(this.state.count);
-        })
+        })*/
+
+        //componentDidMount() {
+             this.timer = setInterval(()=> {
+                this.timer = null;
+                clearInterval(this.timer);
+                axios.get("/api/playercount")
+                .then(res =>{
+                    const count = res.data.count;
+                    this.setState( {count} );
+                    console.log(this.state.count);
+                });
+             }, 1000);
+        //}
+           
         
-        //this.fetchCount().then(this.refreshCount)
-    }
-        setNewUser = UserID =>{
-            this.updateCount({UserID}).then(this.refreshCount) 
-        }
-    refreshCount = res=>
-    this.setState({count: res.data.count})
+            }
+          
+        
     
+
+    
+
+        
+          
+    
+    
+          
         render() {
             return (<>
                 <div className="container">
