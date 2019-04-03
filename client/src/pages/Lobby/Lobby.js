@@ -8,7 +8,7 @@ class Lobby extends Component {
       times: [],
       timeCount: '',
       gameID: '',
-      count: [],
+      count: '',
     }
     timeFunction = (res) => {
         const times = res.data;
@@ -76,15 +76,8 @@ class Lobby extends Component {
         .catch(function (error) {
           console.log(error);
         })
-         
-        /*axios.get("/api/playercount")
-        .then(res =>{
-            const count = res.data.count;
-            this.setState( {count} );
-            console.log(this.state.count);
-        })*/
-
-        //componentDidMount() {
+        
+        //Poll player database every 10 seconds for changes
              this.timer = setInterval(()=> {
                 this.timer = null;
                 clearInterval(this.timer);
@@ -94,11 +87,10 @@ class Lobby extends Component {
                     this.setState( {count} );
                     console.log(this.state.count);
                 });
-             }, 1000);
-        //}
-           
+             }, 5000);
+            
         
-            }
+    }
           
         
     

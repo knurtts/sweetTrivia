@@ -1,6 +1,7 @@
 #playerCard {
     padding: 3% 5% 3% 5%;
     align-content: center;
+    font-size: 40px;
 }
 #timer {
     color: white;
@@ -8,6 +9,10 @@
 }
 #title{
     align-content: center;
+    font-family:BRONCOS;
+    color: #ff5200; 
+    font-style: italic;
+    font-size: 40px;
 }
 
 
