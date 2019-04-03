@@ -1,3 +1,10 @@
+body{
+    background-size: cover;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-position: center;
+}
 #answerCard {
     padding: 3% 5% 3% 5%;
     align-content: center;

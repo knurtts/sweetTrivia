@@ -1,12 +1,15 @@
 import React, {Component} from "react";
-import './Home.css'
+import './Home.css';
 
 
+
+const logo = require('../../assets/images/broncos_mark_white.png');
 class Home extends Component {
   
   render() {
   return (
     <>
+    
     <nav>
             <div className="nav-wrapper" >
                 <a href="#" className="brand-logo" center></a>
@@ -15,6 +18,8 @@ class Home extends Component {
    <div className="container">
                 <div className="row">
                     <div className="col s12">
+
+                    <img src={logo}/>
 
                         {/* Title */}
                         <div><h1>Game Day Trivia</h1></div>
