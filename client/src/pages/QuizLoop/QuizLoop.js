@@ -159,6 +159,9 @@ class QuizLoop extends Component {
             
   </div>
         </nav>
+
+           {/* Timer Component */}
+           <div><h1><CountDownTest/></h1></div>
         
         {this.state.result ? this.renderResult() : this.renderQuiz()}  
 
