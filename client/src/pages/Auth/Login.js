@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import firebase from '../../firebase';
-
+import axios from 'axios';
 
 
 class Login extends Component {
   state = {
     email: '',
     password: '',
+    gameID: '',
+    uID: '',
+    gameID: '',
+    userID: '',
     error: null,
   };
 
@@ -22,12 +26,42 @@ class Login extends Component {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then((user) => {
-        this.props.history.push('/Lobby');
-      })
-      .catch((error) => {
-        this.setState({ error: error });
+      .then((data) => {
+        this.setState({uID:data.user.uid})
+        console.log('uID ' , this.state.uID);
+
+      //Get active GameID
+      axios.get('/api/gameid')
+      .then(res => {
+        this.setState({gameID: res.data[0].id});
+       console.log('gameID' , this.state.gameID);
+
+      //Get User ID
+      axios.get('/api/getuserid/' + this.state.uID)
+      .then(res => {
+        this.setState({userID: res.data.id});
+       console.log('userID' , this.state.userID);
+      
+      //Check if user exists in player table for particular game
+      axios.get('/api/checkplayer/' + this.state.userID +'/' + this.state.gameID)
+      .then(res => {
+        console.log('user exists' , res.data[0].id); 
+        let checkUser = res.data[0].id
+        if(checkUser === ""){
+          //Add gameID and users userID to Player table in SQL
+       axios.post('/api/newplayer/' + this.state.userID +'/' + this.state.gameID )
+       .then(res => {
+        this.props.history.push({pathname: '/Lobby', state: {userID: this.state.userID}});
       });
+        }else{
+          this.props.history.push({pathname: '/Lobby', state: {userID: this.state.userID}}); 
+        }
+      })
+      
+      });
+  });      
+});
+  
   };
   render() {
     const { email, password, error } = this.state;
