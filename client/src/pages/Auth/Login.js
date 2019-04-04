@@ -55,10 +55,26 @@ class Login extends Component {
           this.props.history.push({pathname: '/Lobby', state: {userID: this.state.userID}}); 
         }
       })
-      
+      .catch((error) => {
+        this.setState({ error: error });
       });
-  });      
+
+      
+      })
+      .catch((error) => {
+        this.setState({ error: error });
+      });
+
+  })
+  .catch((error) => {
+    this.setState({ error: error });
+  });
+  
+})
+.catch((error) => {
+  this.setState({ error: error });
 });
+
   
   };
   render() {
