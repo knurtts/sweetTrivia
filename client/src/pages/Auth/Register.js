@@ -12,7 +12,6 @@ class Register extends Component {
     firstName: '',
     lastName: '',
     userID: '',
-    gameID: '',
     error: null,
   };
 
@@ -33,11 +32,11 @@ class Register extends Component {
           firstname:firstName,
           lastname:lastName,
           email:data.user.email,
-        };
-         //Get active GameID
-       axios.get('/api/gameid')
-       .then(res => {
-         this.setState({gameID: res.data[0].id});
+        }
+        // console.log('uid',data.user.uid)
+        // console.log('EmailAddress: ',data.user.email)
+        // console.log('FirstName: '+ firstName)
+        // console.log('LastName: ' + lastName)
 
        //Add users UserID to User table in SQL
        axios.post('/api/newuser', newUser)
