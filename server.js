@@ -49,7 +49,7 @@ io.on("connection", SocketManager);
 // });
 
 
-const syncOptions = { force: true};
+const syncOptions = { force: false};
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`

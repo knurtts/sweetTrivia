@@ -27,6 +27,34 @@ module.exports = (app) => {
             });
     });
 
+    //get User ID
+    app.get("/api/getuserid/:uid", (req,res) => {
+        db.User.findOne({
+            where:{
+                uID: req.params.uid
+            }
+        })
+            .then((user) => {
+                res.json(user);
+            }).catch((err) => {
+                console.log(err);
+            });
+    });
+
+        //Check if user exists in player table for a specific game
+        app.get("/api/checkplayer/:userID/:gameID", (req, res) => {
+            db.Player.findAll({
+                where:{
+                    UserId: req.params.userID,
+                    GameId: req.params.gameID
+                }
+            })
+                .then((data) => {
+                    res.json(data);
+                }).catch(err => console.log(err));
+        });
+    
+
     //get number of players in this game
         //get count of Player table
     app.get("/api/getplayers", (req, res) => {
