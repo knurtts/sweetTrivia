@@ -12,7 +12,7 @@ class Home extends Component {
     
     <nav>
             <div className="nav-wrapper" >
-                <a href="#" className="brand-logo" center></a>
+                <a href="#" className="brand-logo" Test center></a>
             </div>
         </nav>
    <div className="container">

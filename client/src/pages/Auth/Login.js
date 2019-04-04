@@ -29,7 +29,7 @@ class Login extends Component {
       .then((data) => {
         this.setState({uID:data.user.uid})
         console.log('uID ' , this.state.uID);
-
+      
       //Get active GameID
       axios.get('/api/gameid')
       .then(res => {
@@ -57,9 +57,20 @@ class Login extends Component {
           this.props.history.push({pathname: '/Lobby', state: {userID: this.state.userID}}); 
         }
       })
-      
+      .catch((error) => {
+        this.setState({ error: error });
       });
+    })
+    .catch((error) => {
+      this.setState({ error: error });
+    });
+  })
+  .catch((error) => {
+    this.setState({ error: error });
   });      
+})
+.catch((error) => {
+  this.setState({ error: error });
 });
   
   };

@@ -49,14 +49,23 @@ class Register extends Component {
        axios.post('/api/newplayer/' + this.state.userID +'/' + this.state.gameID )
        .then(res => {
         this.props.history.push({pathname: '/Lobby', state: {userID: this.state.userID}});
+      })
+      .catch((error) => {
+        this.setState({ error: error });
       });
-     });  
+     })
+     .catch((error) => {
+      this.setState({ error: error });
+    });  
+    })
+    .catch((error) => {
+      this.setState({ error: error });
     });
-        //Redirect to Lobby page
-        //this.props.history.push( '/Lobby' );
         
-      
-    })    
+    })
+    .catch((error) => {
+      this.setState({ error: error });
+    });    
   };
   render() {
     const { email, password, firstName, lastName, error } = this.state;
