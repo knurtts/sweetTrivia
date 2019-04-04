@@ -3,12 +3,10 @@ import { withRouter } from 'react-router-dom';
 import firebase from '../../firebase';
 import axios from 'axios';
 
-
 class Login extends Component {
   state = {
     email: '',
     password: '',
-    gameID: '',
     uID: '',
     gameID: '',
     userID: '',
@@ -29,7 +27,7 @@ class Login extends Component {
       .then((data) => {
         this.setState({uID:data.user.uid})
         console.log('uID ' , this.state.uID);
-      
+
       //Get active GameID
       axios.get('/api/gameid')
       .then(res => {
@@ -57,20 +55,9 @@ class Login extends Component {
           this.props.history.push({pathname: '/Lobby', state: {userID: this.state.userID}}); 
         }
       })
-      .catch((error) => {
-        this.setState({ error: error });
+      
       });
-    })
-    .catch((error) => {
-      this.setState({ error: error });
-    });
-  })
-  .catch((error) => {
-    this.setState({ error: error });
   });      
-})
-.catch((error) => {
-  this.setState({ error: error });
 });
   
   };
@@ -97,13 +84,13 @@ class Login extends Component {
             <form onSubmit={this.handleSubmit}>
             <div className="row">
               <div className="input-field col s6">
-                <input type="text" className="validate text black-text" name="email" value={email} onChange={this.handleInputChange} />
+                <input type="text" className="validate text white-text" name="email" value={email} onChange={this.handleInputChange} />
                 <label for="email">Email</label>
               </div>
             </div>
               <div className="row">
                 <div className="input-field col s6">
-                  <input type="password" name="password" className=" text black-text" value={password} onChange={this.handleInputChange} />
+                  <input type="password" name="password" className=" text white-text" value={password} onChange={this.handleInputChange} />
                   <label for="password">Password</label>  
               </div>
             </div>   
@@ -123,3 +110,4 @@ class Login extends Component {
   
  }
  export default withRouter(Login);
+
