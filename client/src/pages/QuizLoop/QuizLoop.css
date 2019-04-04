@@ -25,6 +25,11 @@ body {
   /* Result Component */
   .result {
     padding: 1.5rem 2.5rem;
+    color:#FF5200;
+    background-color: #ffffff;
+    opacity: 0.8;
+    filter: alpha(opacity=60);
+
   }
   
   /* Quiz Component */

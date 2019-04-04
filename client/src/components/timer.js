@@ -12,7 +12,7 @@ class CountDownTest extends Component {
   onComplete = () => {
     this.setState(
       {
-        completions: this.state.completions + 1
+        completions: this.state.completions  
       },
       () => console.log('completions', this.state.completions)
     )
