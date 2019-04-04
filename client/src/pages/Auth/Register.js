@@ -61,10 +61,6 @@ class Register extends Component {
       this.setState({ error: error });
     });
         
-    })
-    .catch((error) => {
-      this.setState({ error: error });
-    });    
   };
   render() {
     const { email, password, firstName, lastName, error } = this.state;
