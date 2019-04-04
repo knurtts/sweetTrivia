@@ -49,12 +49,12 @@ io.on("connection", SocketManager);
 // });
 
 
-const syncOptions = { force: false};
+const syncOptions = { force: true};
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
 if (process.env.NODE_ENV === 'test') {
-  syncOptions.force = false;
+  syncOptions.force = true;
 }
 
 db.sequelize.sync(syncOptions).then(() => {
