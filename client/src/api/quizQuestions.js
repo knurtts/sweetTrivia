@@ -8,11 +8,11 @@ var quizQuestions = [
             },
             {
                 type: "Wrong",
-                content: "8/14/1960"
+                content: "August 14th 1960"
             },
             {
                 type: "Wrong",
-                content: "8/14/1969"
+                content: "August 14th 1969"
             }
         ]
     },
@@ -68,19 +68,19 @@ var quizQuestions = [
         ]
     },
     {
-        question: "Along with Brett Favre, Peyton Manning of the Broncos was one of only two NFL quarterbacks who’ve managed to beat ...",
+        question: "What type of candy originated in Golden, Colorado?",
         answers: [
             {
                 type: "Right",
-                content: "all 32 teams"
+                content: "Jolly Ranchers"
             },
             {
                 type: "Wrong",
-                content: "The record for passing yards"
+                content: "Laffy Taffy"
             },
             {
                 type: "Wrong",
-                content: "up, a fan in the stands"
+                content: "Tootsie Roll"
             }
         ]
     }
