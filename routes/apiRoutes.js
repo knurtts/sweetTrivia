@@ -145,6 +145,15 @@ module.exports = (app) => {
             .catch(err => console.log(err));
     });
 
+    //record player score
+    app.post("/api/score/:score/:userId", (req, res) => {
+        db.Player.update(
+            {score: req.params.score},
+            {where: {UserId: req.params.userId}}
+        ).then(data => console.log("score updated"))
+            .catch(err => console.log(err));
+    });
+
     //get questions
     app.get("/api/getquestions", (req, res) => {
         db.Question.findAll({})

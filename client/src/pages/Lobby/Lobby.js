@@ -8,6 +8,7 @@ class Lobby extends Component {
       times: [],
       timeCount: '',
       gameID: '',
+      userID: '',
       count: [],
     };
 
@@ -53,7 +54,9 @@ class Lobby extends Component {
           if (distance < 0) {
             clearInterval(interval);
             console.log("EXPIRED");
-            this.props.history.push('/quiz')
+            //this.props.history.push('/quiz')
+            console.log('This is the user id: ' , this.state.userID);
+            this.props.history.push({pathname: '/quiz', state: {userID: this.state.userID}});
             this.setState({
                 timeCount:"Get Ready To Play!!"
                 
@@ -63,6 +66,7 @@ class Lobby extends Component {
     }
     componentDidMount() {
         const userID = this.props.location.state.userID
+        this.setState({userID});
         console.log('UserID' + userID); 
       axios.get('/api/starttime')
         .then(res => { 
@@ -78,12 +82,7 @@ class Lobby extends Component {
           console.log(error);
         })
          
-        /*axios.get("/api/playercount")
-        .then(res =>{
-            const count = res.data.count;
-            this.setState( {count} );
-            console.log(this.state.count);
-        })*/
+        
 
         //componentDidMount() {
              this.timer = setInterval(()=> {

@@ -50,7 +50,7 @@ class Register extends Component {
        .then(res => {
          console.log('Check user ID' , this.state.userID);
          
-        this.props.history.push({pathname: '/Lobby', state: {userID: this.state.userID}});
+        this.props.history.push({pathname: '/lobby', state: {userID: this.state.userID}});
       })
       .catch((error) => {
         this.setState({ error: error });
