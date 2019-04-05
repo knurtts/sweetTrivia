@@ -3,12 +3,10 @@ import { withRouter } from 'react-router-dom';
 import firebase from '../../firebase';
 import axios from 'axios';
 
-
 class Login extends Component {
   state = {
     email: '',
     password: '',
-    gameID: '',
     uID: '',
     gameID: '',
     userID: '',
@@ -57,10 +55,26 @@ class Login extends Component {
           this.props.history.push({pathname: '/Lobby', state: {userID: this.state.userID}}); 
         }
       })
-      
+      .catch((error) => {
+        this.setState({ error: error });
       });
-  });      
+
+      
+      })
+      .catch((error) => {
+        this.setState({ error: error });
+      });
+
+  })
+  .catch((error) => {
+    this.setState({ error: error });
+  });
+  
+})
+.catch((error) => {
+  this.setState({ error: error });
 });
+
   
   };
   render() {
@@ -112,3 +126,4 @@ class Login extends Component {
   
  }
  export default withRouter(Login);
+
