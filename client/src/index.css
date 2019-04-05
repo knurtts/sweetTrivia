@@ -41,12 +41,18 @@ main {
   margin: 30px;
   background-color: #ffffff;
   opacity: 0.6;
-  filter: alpha(opacity=60);
+  filter: alpha(opacity=60); /* For IE8 and earlier */
+  
 }
 
  /* label focus color */
  .input-field input[type=password]:focus + label {
   color:  white !important;
+  font-size: 20px;
+  
+  
+  
+  
 }
 /* label underline focus color */
 .input-field input[type=password]:focus {
@@ -55,7 +61,7 @@ main {
   margin: 30px;
   background-color: #ffffff;
   opacity: 0.6;
-  filter: alpha(opacity=60);
+  filter: alpha(opacity=60); /* For IE8 and earlier */
 }
 .prefix.active {
   color: white !important;
@@ -68,6 +74,7 @@ main {
 .input-field input[type=email]:focus {
   border-bottom: 1px solid white !important;
   box-shadow: 0 1px 0 0 white !important ;
+  
 }
 
 /* waves effect button color */
@@ -80,7 +87,7 @@ main {
     font-size: 20px; 
     margin: 20px;
     font-style:italic;
-    font-family:BRONCOS;
+    font-family:'Anton', sans-serif;
     border-radius: 15px;
     
 
@@ -95,3 +102,10 @@ main {
 }
 
 
+#playerCard{
+  align-content: center;
+  font-family: 'Anton', sans-serif;
+  color: #ff5200; 
+  font-style: italic;
+  font-size: 40px;
+}

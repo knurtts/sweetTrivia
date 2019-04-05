@@ -5,6 +5,7 @@ import io from "socket.io-client";
 import quizQuestions from '../../api/quizQuestions';
 import Quiz from "../../components/Quiz";
 import Result from "../../components/Result";
+import Answered from "./Answered";
 
 // const socketUrl = "https://gamedaytrivia.herokuapp.com";
 const socketUrl = "http://localhost:3001";
@@ -22,8 +23,9 @@ class QuizLoop extends Component {
           answerOptions: [],
           answer: '',
           answersCount: {
-            right: 0,
-            wrong: 0
+            Right: 0,
+            Wrong: 0,
+            Maybe: 0
           },
           result: ''
         };
@@ -109,7 +111,7 @@ class QuizLoop extends Component {
         this.setUserAnswer(event.currentTarget.value);
     
         if (this.state.questionId < quizQuestions.length) {
-          setTimeout(() => this.setNextQuestion(), 300);
+          setTimeout(() => this.setNextQuestion(<Answered/>), 300);
         } else {
           setTimeout(() => this.setResults(this.getResults()), 300);
         }
@@ -179,8 +181,7 @@ class QuizLoop extends Component {
   </div>
         </nav>
 
-           {/* Timer Component */}
-           <div><h1><CountDownTest/></h1></div>
+           
         {/*Pulls in the quiz and answer components */}
         {this.state.result ? this.renderResult() : this.renderQuiz()}  
 
