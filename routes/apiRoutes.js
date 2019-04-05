@@ -19,13 +19,41 @@ module.exports = (app) => {
 
     //get user
     app.get("/api/getuser/:uid", (req,res) => {
-        db.User.fineOne({uID: req.params.uid} || {id: req.params.uid})
+        db.User.findOne({uID: req.params.uid} || {id: req.params.uid})
             .then((user) => {
                 res.json(user);
             }).catch((err) => {
                 console.log(err);
             });
     });
+
+    //get User ID
+    app.get("/api/getuserid/:uid", (req,res) => {
+        db.User.findOne({
+            where:{
+                uID: req.params.uid
+            }
+        })
+            .then((user) => {
+                res.json(user);
+            }).catch((err) => {
+                console.log(err);
+            });
+    });
+
+        //Check if user exists in player table for a specific game
+        app.get("/api/checkplayer/:userID/:gameID", (req, res) => {
+            db.Player.findAll({
+                where:{
+                    UserId: req.params.userID,
+                    GameId: req.params.gameID
+                }
+            })
+                .then((data) => {
+                    res.json(data);
+                }).catch(err => console.log(err));
+        });
+    
 
     //get number of players in this game
         //get count of Player table
@@ -36,8 +64,27 @@ module.exports = (app) => {
             }).catch(err => console.log(err));
     });
 
+    app.get("/api/playercount", (req, res) => {
+        db.Player.findAndCountAll({})
+            .then((data) => {
+                res.json(data);
+            }).catch(err => console.log(err));
+    });
+
     //get start time of active game
     app.get("/api/starttime", (req, res) => {
+        db.Game.findAll({
+            where:{
+                active: true
+            }
+        })
+            .then((data) => {
+                res.json(data);
+            }).catch(err => console.log(err));
+    });
+
+    //get start time of active game
+    app.get("/api/gameid", (req, res) => {
         db.Game.findAll({
             where:{
                 active: true
@@ -62,10 +109,10 @@ module.exports = (app) => {
     });
 
     //make new player
-    app.post("/api/newplayer/:game_id/:player_id", (req, res) => {
+    app.post("/api/newplayer/:user_id/:game_id", (req, res) => {
         db.Player.create({
             GameId: req.params.game_id,
-            UserId: req.params.player_id,
+            UserId: req.params.user_id,
             score: 0
         }).then(data => res.json(data))
             .catch(err => console.log(err));
@@ -95,6 +142,15 @@ module.exports = (app) => {
             correctAnswer: req.body.correct,
             QuestionId: req.params.question_id
         }).then(data => res.json(data))
+            .catch(err => console.log(err));
+    });
+
+    //record player score
+    app.post("/api/score/:score/:userId", (req, res) => {
+        db.Player.update(
+            {score: req.params.score},
+            {where: {UserId: req.params.userId}}
+        ).then(data => console.log("score updated"))
             .catch(err => console.log(err));
     });
 

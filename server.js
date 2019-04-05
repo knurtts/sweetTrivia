@@ -5,6 +5,7 @@ const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const app = express();
+const axios = require("axios");
 
 const db = require('./models');
 
@@ -26,19 +27,29 @@ app.get("*", function(req, res) {
 });
 
 //Socket.io setup
-const http =  require("http").createServer();
-const io = module.exports = require("socket.io")(http, {origins: "*:*"});
-
+const http =  require("http").createServer(app);
+const io = module.exports = require("socket.io")(http);
+// const SocketPORT = process.env.PORT+1 || 3002;
 const SocketManager = require("./SocketManager");
+
 
 io.on("connection", SocketManager);
 
-http.listen(3002, () => {
-  console.log("SOCKET CONNECTION MADE AT PORT: "+PORT);
-});
+// io.on("connection", function(socket) {
+//   console.log("Socket ID: "+socket.id);
+
+//   socket.on("userConnected", () => {
+//       let questions = [];
+//       axios.get("/api/getquestions").then((qstns) => {
+//           questions = qstns.data;
+          
+//           io.emit("gotquestions", questions);
+//       }).catch(err => console.log(err));
+//   });
+// });
 
 
-const syncOptions = { force: false };
+const syncOptions = { force: false};
 
 // If running a test, set syncOptions.force to true
 // clearing the `testdb`
@@ -47,7 +58,7 @@ if (process.env.NODE_ENV === 'test') {
 }
 
 db.sequelize.sync(syncOptions).then(() => {
-  app.listen(PORT, function() {
+  http.listen(PORT, function() {
     console.log(`🌎 ==> API server now on port ${PORT}!`);
   });
 });

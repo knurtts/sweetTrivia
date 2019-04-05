@@ -1,11 +1,24 @@
+body {
+    background-size: cover;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-position: center;
+}
 #playerCard {
     padding: 3% 5% 3% 5%;
     align-content: center;
 }
 #timer {
-    padding: 3% 5% 3% 5%;
-    align-content: center;
+    color: white;
+    font-size: 80px;
 }
 #title{
     align-content: center;
+    font-family: 'Anton', sans-serif;
+    color: #ff5200; 
+    font-style: italic;
+    font-size: 40px;
 }
+
+

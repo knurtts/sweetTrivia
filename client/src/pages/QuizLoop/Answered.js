@@ -7,7 +7,13 @@ import CountDownTest from "../../components/timer";
 class Answered extends Component {
 
     render() {
-        return (<>
+        return (
+        <>
+    <nav>
+            <div className="nav-wrapper" >
+            </div>
+        </nav>
+
             <div className="container">
                 <div className="row">
                     <div className="col s12">
@@ -26,8 +32,6 @@ class Answered extends Component {
                                 </p>
                             </div>
                         </div>
-
-                        <br/>
                         
                         {/* Selected Question */}
                         <div className="card blue">

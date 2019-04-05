@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import firebase from '../../firebase';
 import './Register.css';
+import axios from 'axios';
+import { now } from 'moment';
 
 class Register extends Component {
   state = {
@@ -9,6 +11,8 @@ class Register extends Component {
     password: '',
     firstName: '',
     lastName: '',
+    userID: '',
+    gameID: '',
     error: null,
   };
 
@@ -24,55 +28,91 @@ class Register extends Component {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((data) => {
-        console.log('uid',data.user.uid)
-        console.log('EmailAddress: ',data.user.email)
-        console.log('FirstName: '+ firstName)
-        console.log('LastName: ' + lastName)
+        const newUser={
+          uID:data.user.uid,
+          firstname:firstName,
+          lastname:lastName,
+          email:data.user.email,
+        };
+         //Get active GameID
+       axios.get('/api/gameid')
+       .then(res => {
+         this.setState({gameID: res.data[0].id});
 
-        this.props.history.push('/Lobby');
+       //Add users UserID to User table in SQL
+       axios.post('/api/newuser', newUser)
+       .then(res => {
+       this.setState({userID: res.data.id});
+       console.log(this.state);
+
+       //Add users UserID to User table in SQL
+       axios.post('/api/newplayer/' + this.state.userID +'/' + this.state.gameID )
+       .then(res => {
+         console.log('Check user ID' , this.state.userID);
+         
+        this.props.history.push({pathname: '/lobby', state: {userID: this.state.userID}});
       })
       .catch((error) => {
         this.setState({ error: error });
       });
-  };
+
+     })
+     .catch((error) => {
+      this.setState({ error: error });
+    });
+
+    })
+    .catch((error) => {
+      this.setState({ error: error });
+    });
+ 
+    })
+    .catch((error) => {
+      this.setState({ error: error });
+    });
+  
+  }
   render() {
     const { email, password, firstName, lastName, error } = this.state;
     return (
         <div>
           <nav>
-            <div className="nav-wrapper">
-                <a href="#" className="brand-logo">Register</a>
-            </div>
-        </nav>
-        <br/> 
+            <div className="nav-wrapper" >  
+
+            <ul class="right waves-effect waves-light">
+      <li><a href="/">Home</a></li>
+
+    </ul>
+  </div>
+        </nav> 
         <div class="container">
         <div className = "register"> 
             <form onSubmit={this.handleSubmit}>
         <div className="row">
             <div className="input-field col s6">
-                <input type="text" name="firstName"  value={firstName} onChange={this.handleInputChange} />
+                <input type="text" name="firstName" className="text black-text" value={firstName} onChange={this.handleInputChange} />
                 <label for="firstName">First Name</label>
             </div>
         </div>
             <div className="row">
             <div className="input-field col s6">
-                <input type="text" name="lastName"  value={lastName} onChange={this.handleInputChange} />
+                <input type="text" name="lastName"  className="text black-text" value={lastName} onChange={this.handleInputChange} />
                 <label for="lastName">Last Name</label>
             </div>
         </div>
         <div className="row">
             <div className="input-field col s6">
-                <input type="text" className="validate" name="email" value={email} onChange={this.handleInputChange} />
+                <input type="text" className="validate" name="email" className="text black-text" value={email} onChange={this.handleInputChange} />
                 <label for="email">Email</label>
             </div>
         </div>
         <div className="row">
             <div className="input-field col s6">
-                <input type="password" className="validate" name="password"  value={password} onChange={this.handleInputChange} />
+                <input type="password" className="validate" name="password" className="text black-text" value={password} onChange={this.handleInputChange} />
                 <label for="password">Password</label>  
             </div>
         </div> 
-            <button className="waves-effect waves-light btn-large" children="Register" />
+            <button className="waves-effect waves-orange btn-large" children="Register" />
         </form>
         </div>  
 
@@ -88,3 +128,5 @@ class Register extends Component {
     }
    }
    export default withRouter(Register);
+
+

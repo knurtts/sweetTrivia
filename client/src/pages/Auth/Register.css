@@ -1,6 +1,6 @@
 
 h1{
-    font-family:BRONCOS;
+    font-family: 'Anton', sans-serif;
     color: #ff5200; 
     font-style: italic;
     
@@ -12,16 +12,7 @@ nav{
     
 }
 
-.btn-large{
-    background-color: #ff5200;
-    font-size: 20px; 
-    margin: 20px;
-    font-style:italic;
-    font-family:BRONCOS;
-    border-radius: 15px;
-    
 
-}
 
 .register{
    
@@ -32,24 +23,31 @@ nav{
 }
 
 body{
-    background-position: center;
+    
     background-image: url("../../assets/images/Helmet.JPG");
-    background-repeat: no-repeat;
     background-size: cover;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-position: center;
+
     
     
 }
-
+.input-field {
+    margin-top: 0;
+    margin-bottom: 0;
+}
 .brand-logo{
     margin:5px;
-    font-family:BRONCOS;
+    font-family: 'Anton', sans-serif;
     font-style:italic;
      
     
 }
 
 .input-field{
-    font-family:BRONCOS;
+    font-family: 'Anton', sans-serif;
     font-style:italic;
 }
 

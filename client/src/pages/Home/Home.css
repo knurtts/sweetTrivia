@@ -1,0 +1,11 @@
+body {
+    background-size: cover;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-position: center;
+}
+img {
+    height:100px;
+    width:100px;
+}
