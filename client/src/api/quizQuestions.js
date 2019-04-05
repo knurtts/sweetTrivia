@@ -3,15 +3,15 @@ var quizQuestions = [
         question: "When was the Broncos club founded?",
         answers: [
             {
-                type: "Right",
+                type: "All",
                 content: "August 14th 1959"
             },
             {
-                type: "Wrong",
+                type: "Some",
                 content: "August 14th 1960"
             },
             {
-                type: "Maybe",
+                type: "None",
                 content: "August 14th 1969"
             }
         ]
@@ -20,16 +20,16 @@ var quizQuestions = [
         question: "Who did the Broncos play there first game against?",
         answers: [
             {
-                type: "Right",
+                type: "All",
                 content: "Boston Patriots"
                 
             },
             {
-                type: "Wrong",
+                type: "Some",
                 content: "Kansas City Chiefs"
             },
             {
-                type: "Maybe",
+                type: "None",
                 content: "Oakland Raiders"
             }
         ]
@@ -38,16 +38,16 @@ var quizQuestions = [
         question: "What Colorado city is the highest in the United States?",
         answers: [
             {
-                type: "Right",
+                type: "All",
                 content: "Leadville"
                 
             },
             {
-                type: "Wrong",
+                type: "Some",
                 content: "Alma"
             },
             {
-                type: "Maybe",
+                type: "None",
                 content: "Breckenridge"
             }
         ]
@@ -56,16 +56,16 @@ var quizQuestions = [
         question: "Who was the first male cheerleader in Denver Broncos history?",
         answers: [
             {
-                type: "Right",
+                type: "All",
                 content: "Robin Williams"
                 
             },
             {
-                type: "Wrong",
+                type: "Some",
                 content: "Jim Carrey"
             },
             {
-                type: "Maybe",
+                type: "None",
                 content: "Barrel Man"
             }
         ]
@@ -74,15 +74,15 @@ var quizQuestions = [
         question: "What type of candy originated in Golden, Colorado?",
         answers: [
             {
-                type: "Right",
+                type: "All",
                 content: "Jolly Ranchers"
             },
             {
-                type: "Wrong",
+                type: "Some",
                 content: "Laffy Taffy"
             },
             {
-                type: "Maybe",
+                type: "None",
                 content: "Tootsie Roll"
             }
         ]

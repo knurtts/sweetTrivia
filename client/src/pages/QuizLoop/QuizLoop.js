@@ -23,9 +23,9 @@ class QuizLoop extends Component {
           answerOptions: [],
           answer: '',
           answersCount: {
-            Right: 0,
-            Wrong: 0,
-            Maybe: 0
+            All: 0,
+            Some: 0,
+            None: 0
           },
           result: ''
         };
@@ -111,7 +111,7 @@ class QuizLoop extends Component {
         this.setUserAnswer(event.currentTarget.value);
     
         if (this.state.questionId < quizQuestions.length) {
-          setTimeout(() => this.setNextQuestion(<Answered/>), 300);
+          setTimeout(() => this.setNextQuestion(), 300);
         } else {
           setTimeout(() => this.setResults(this.getResults()), 300);
         }
@@ -150,10 +150,15 @@ class QuizLoop extends Component {
       }
     
       setResults(result) {
-        if (result.length === 1) {
-          this.setState({ result: result[0] });
+        if (result.length == 1) {
+          this.setState({ result: result[0] }, ()=>{
+              setTimeout(() => {
+                this.props.history.push({pathname: '/finalrank', state: {userID: this.state.userID}});
+              }, 5000);
+          });
+          
         } else {
-          this.setState({ result: 'Undetermined' });
+          this.setState({ result: 'None' });
         }
       }
       renderQuiz() {
@@ -170,8 +175,11 @@ class QuizLoop extends Component {
       }
     
       renderResult() {
-        return <Result quizResult={this.state.result} />;
-      }
+        return <Result quizResult={this.state.result}  />
+        
+            
+        };
+      
 
     render() {
         return (<>
