@@ -16,6 +16,7 @@ class QuizLoop extends Component {
         super(props);
 
         this.state = {
+            userID: '',
             socket: null,
             counter: 0,
           questionId: 1,
@@ -44,6 +45,10 @@ class QuizLoop extends Component {
     }
 
     componentDidMount() {
+      const userID = this.props.location.state.userID
+      this.setResults({})
+      console.log('userID' , userID);
+      
         const { socket } = this.state;
 
         // socket.emit("userConnected")
