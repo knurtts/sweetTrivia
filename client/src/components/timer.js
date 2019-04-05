@@ -26,7 +26,7 @@ class CountDownTest extends Component {
           seconds={20}
           color="#FF5200"
           alpha={0.9}
-          size={100}
+          size={80}
           onComplete={this.onComplete}
         />
       </div>
