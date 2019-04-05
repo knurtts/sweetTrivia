@@ -14,7 +14,7 @@ function Result(props) {
     transitionAppearTimeout={500}
   >
     <div>
-      You answered <strong>{props.quizResult}</strong>!
+      You answered <strong>{props.quizResult}</strong> of the questions correct!
     </div>
   </CSSTransitionGroup>
   );
