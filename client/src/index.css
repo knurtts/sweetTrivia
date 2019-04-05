@@ -2,12 +2,17 @@ body {
   margin: 0;
   padding: 0;
   color: white !important;
+  font-family: 'Anton', sans-serif;
+  font-style: italic;
   
 }
 
 
+
+
 .input-field textarea:focus + label {
   color: white !important;
+  
 }
 
 .row .input-field textarea:focus {
@@ -33,6 +38,10 @@ main {
 .input-field input[type=text]:focus {
   border-bottom: 1px solid  #FF5200 !important;
   box-shadow: 0 1px 0 0  #FF5200 !important ;
+  margin: 30px;
+  background-color: #ffffff;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
 }
 
  /* label focus color */
@@ -43,6 +52,10 @@ main {
 .input-field input[type=password]:focus {
   border-bottom: 1px solid  #FF5200 !important;
   box-shadow: 0 1px 0 0  #FF5200 !important ;
+  margin: 30px;
+  background-color: #ffffff;
+  opacity: 0.6;
+  filter: alpha(opacity=60);
 }
 .prefix.active {
   color: white !important;

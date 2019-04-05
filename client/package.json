@@ -6,6 +6,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "materialize-css": "^1.0.0-rc.2",
+    "moment": "^2.24.0",
     "npm-merge-driver": "^2.3.5",
     "prop-types": "^15.7.2",
     "react": "^16.6.3",

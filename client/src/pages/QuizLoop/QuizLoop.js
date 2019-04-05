@@ -181,7 +181,7 @@ class QuizLoop extends Component {
 
            {/* Timer Component */}
            <div><h1><CountDownTest/></h1></div>
-        
+        {/*Pulls in the quiz and answer components */}
         {this.state.result ? this.renderResult() : this.renderQuiz()}  
 
             
