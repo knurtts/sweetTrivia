@@ -2,6 +2,16 @@ body {
     
   margin: 0;
   padding: 0;
+  background-image: url("../../assets/images/Helmet.JPG");
+    background-size: cover;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-position: center;
+}
+
+div {
+    
 }
 .container {
     position: relative;
