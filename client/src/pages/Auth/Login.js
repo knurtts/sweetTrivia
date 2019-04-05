@@ -49,10 +49,10 @@ class Login extends Component {
           //Add gameID and users userID to Player table in SQL
        axios.post('/api/newplayer/' + this.state.userID +'/' + this.state.gameID )
        .then(res => {
-        this.props.history.push({pathname: '/Lobby', state: {userID: this.state.userID}});
+        this.props.history.push({pathname: '/lobby', state: {userID: this.state.userID}});
       });
         }else{
-          this.props.history.push({pathname: '/Lobby', state: {userID: this.state.userID}}); 
+          this.props.history.push({pathname: '/lobby', state: {userID: this.state.userID}}); 
         }
       })
       .catch((error) => {

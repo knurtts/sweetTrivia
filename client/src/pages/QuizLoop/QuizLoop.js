@@ -46,7 +46,7 @@ class QuizLoop extends Component {
 
     componentDidMount() {
       const userID = this.props.location.state.userID
-      this.setResults({})
+      this.setState({userID});
       console.log('userID' , userID);
       
         const { socket } = this.state;
@@ -157,6 +157,12 @@ class QuizLoop extends Component {
       setResults(result) {
         if (result.length == 1) {
           this.setState({ result: result[0] }, ()=>{
+
+            axios.post("/api/score/"+this.state.answersCount.All+"/"+this.state.userID)
+              .then(data => {
+                console.log("score set");
+              });
+
               setTimeout(() => {
                 this.props.history.push({pathname: '/finalrank', state: {userID: this.state.userID}});
               }, 5000);
