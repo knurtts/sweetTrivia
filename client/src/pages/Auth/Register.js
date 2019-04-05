@@ -48,6 +48,8 @@ class Register extends Component {
        //Add users UserID to User table in SQL
        axios.post('/api/newplayer/' + this.state.userID +'/' + this.state.gameID )
        .then(res => {
+         console.log('Check user ID' , this.state.userID);
+         
         this.props.history.push({pathname: '/Lobby', state: {userID: this.state.userID}});
       })
       .catch((error) => {

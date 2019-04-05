@@ -93,3 +93,10 @@ main {
 }
 
 
+#playerCard{
+  align-content: center;
+  font-family: 'Anton', sans-serif;
+  color: #ff5200; 
+  font-style: italic;
+  font-size: 40px;
+}
