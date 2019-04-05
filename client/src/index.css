@@ -39,7 +39,10 @@ main {
   border-bottom: 1px solid  #FF5200 !important;
   box-shadow: 0 1px 0 0  #FF5200 !important ;
   margin: 30px;
-  filter: alpha(opacity=60);
+  background-color: #ffffff;
+  opacity: 0.6;
+  filter: alpha(opacity=60); /* For IE8 and earlier */
+  
 }
 
  /* label focus color */
@@ -47,13 +50,18 @@ main {
   color:  white !important;
   font-size: 20px;
   
+  
+  
+  
 }
 /* label underline focus color */
 .input-field input[type=password]:focus {
   border-bottom: 1px solid  #FF5200 !important;
   box-shadow: 0 1px 0 0  #FF5200 !important ;
   margin: 30px;
-  filter: alpha(opacity=60);
+  background-color: #ffffff;
+  opacity: 0.6;
+  filter: alpha(opacity=60); /* For IE8 and earlier */
 }
 .prefix.active {
   color: white !important;
@@ -66,6 +74,7 @@ main {
 .input-field input[type=email]:focus {
   border-bottom: 1px solid white !important;
   box-shadow: 0 1px 0 0 white !important ;
+  
 }
 
 /* waves effect button color */

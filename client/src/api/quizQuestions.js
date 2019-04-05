@@ -11,7 +11,7 @@ var quizQuestions = [
                 content: "August 14th 1960"
             },
             {
-                type: "Wrong",
+                type: "Maybe",
                 content: "August 14th 1969"
             }
         ]
@@ -20,16 +20,17 @@ var quizQuestions = [
         question: "Who did the Broncos play there first game against?",
         answers: [
             {
-                type: "Wrong",
-                content: "Oakland Raiders"
+                type: "Right",
+                content: "Boston Patriots"
+                
             },
             {
                 type: "Wrong",
                 content: "Kansas City Chiefs"
             },
             {
-                type: "Right",
-                content: "Boston Patriots"
+                type: "Maybe",
+                content: "Oakland Raiders"
             }
         ]
     },
@@ -37,15 +38,16 @@ var quizQuestions = [
         question: "What Colorado city is the highest in the United States?",
         answers: [
             {
+                type: "Right",
+                content: "Leadville"
+                
+            },
+            {
                 type: "Wrong",
                 content: "Alma"
             },
             {
-                type: "Right",
-                content: "Leadville"
-            },
-            {
-                type: "Wrong",
+                type: "Maybe",
                 content: "Breckenridge"
             }
         ]
@@ -54,16 +56,17 @@ var quizQuestions = [
         question: "Who was the first male cheerleader in Denver Broncos history?",
         answers: [
             {
-                type: "Wrong",
-                content: "Barrel Man"
+                type: "Right",
+                content: "Robin Williams"
+                
             },
             {
                 type: "Wrong",
                 content: "Jim Carrey"
             },
             {
-                type: "Right",
-                content: "Robin Williams"
+                type: "Maybe",
+                content: "Barrel Man"
             }
         ]
     },
@@ -79,7 +82,7 @@ var quizQuestions = [
                 content: "Laffy Taffy"
             },
             {
-                type: "Wrong",
+                type: "Maybe",
                 content: "Tootsie Roll"
             }
         ]
