@@ -82,8 +82,7 @@ class Register extends Component {
 
     </ul>
   </div>
-        </nav>
-        <br/> 
+        </nav> 
         <div class="container">
         <div className = "register"> 
             <form onSubmit={this.handleSubmit}>
