@@ -101,7 +101,10 @@ module.exports = (app) => {
             include: [{
                 model: db.User,
                 required: true
-            }]
+            }],
+            order: [
+                ["score", "DESC"]
+            ]
         })
             .then(data => {
                 res.json(data);

@@ -68,20 +68,20 @@ class FinalRank extends Component {
                                     { this.state.users.map(user => <li>{user.name}</li>)}
                                 </ul>
                                 <div className="panel panel-default p50 uth-panel">
-                                    <table className="table table-hover">
+                                <table className="table table-hover">
                                         <thead>
                                             <tr>
                                                 <th>Name</th>
                                                 <th>Total Score</th>
-                                                <th>Overall Rank</th>
+                                                {/* <th>Overall Rank</th> */}
                                             </tr>
                                         </thead>
                                         <tbody>
                                         {this.state.users.map(user =>
                                             <tr key={user.id}>
+                                            <td>{user.User.firstname} {user.User.lastname}</td>
                                             <td>{user.score} </td>
-                                            <td>{user.User.firstname}{user.User.lastname}</td>
-                                            <td>{user.overallRank}</td>
+                                            {/* <td>{user.overallRank}</td> */}
                                             </tr>
                                         )}
                                         </tbody>
