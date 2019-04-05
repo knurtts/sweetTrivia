@@ -12,6 +12,7 @@ class Register extends Component {
     firstName: '',
     lastName: '',
     userID: '',
+    gameID: '',
     error: null,
   };
 
@@ -32,31 +33,43 @@ class Register extends Component {
           firstname:firstName,
           lastname:lastName,
           email:data.user.email,
-        }
-        // console.log('uid',data.user.uid)
-        // console.log('EmailAddress: ',data.user.email)
-        // console.log('FirstName: '+ firstName)
-        // console.log('LastName: ' + lastName)
+        };
+         //Get active GameID
+       axios.get('/api/gameid')
+       .then(res => {
+         this.setState({gameID: res.data[0].id});
 
-        console.log(newUser);
-        //Add users User to User table in SQL
-        axios.post('/api/newuser', newUser)
-        .then(res => {
-        this.setState({userID:res.data.id})
-        
-         
-        this.props.history.push('/Lobby');
+       //Add users UserID to User table in SQL
+       axios.post('/api/newuser', newUser)
+       .then(res => {
+       this.setState({userID: res.data.id});
+       console.log(this.state);
+
+       //Add users UserID to User table in SQL
+       axios.post('/api/newplayer/' + this.state.userID +'/' + this.state.gameID )
+       .then(res => {
+        this.props.history.push({pathname: '/Lobby', state: {userID: this.state.userID}});
       })
       .catch((error) => {
         this.setState({ error: error });
       });
+
+     })
+     .catch((error) => {
+      this.setState({ error: error });
+    });
+
     })
-      .catch((error) => {
-        this.setState({ error: error });
-        console.log(this.setState({ error: error }));
-        
-      });
-  };
+    .catch((error) => {
+      this.setState({ error: error });
+    });
+ 
+    })
+    .catch((error) => {
+      this.setState({ error: error });
+    });
+  
+  }
   render() {
     const { email, password, firstName, lastName, error } = this.state;
     return (
@@ -75,25 +88,25 @@ class Register extends Component {
             <form onSubmit={this.handleSubmit}>
         <div className="row">
             <div className="input-field col s6">
-                <input type="text" name="firstName" className="text black-text" value={firstName} onChange={this.handleInputChange} />
+                <input type="text" name="firstName" className="text white-text" value={firstName} onChange={this.handleInputChange} />
                 <label for="firstName">First Name</label>
             </div>
         </div>
             <div className="row">
             <div className="input-field col s6">
-                <input type="text" name="lastName"  className="text black-text" value={lastName} onChange={this.handleInputChange} />
+                <input type="text" name="lastName"  className="text white-text" value={lastName} onChange={this.handleInputChange} />
                 <label for="lastName">Last Name</label>
             </div>
         </div>
         <div className="row">
             <div className="input-field col s6">
-                <input type="text" className="validate" name="email" className="text black-text" value={email} onChange={this.handleInputChange} />
+                <input type="text" className="validate" name="email" className="text white-text" value={email} onChange={this.handleInputChange} />
                 <label for="email">Email</label>
             </div>
         </div>
         <div className="row">
             <div className="input-field col s6">
-                <input type="password" className="validate" name="password" className="text black-text" value={password} onChange={this.handleInputChange} />
+                <input type="password" className="validate" name="password" className="text white-text" value={password} onChange={this.handleInputChange} />
                 <label for="password">Password</label>  
             </div>
         </div> 
@@ -113,3 +126,5 @@ class Register extends Component {
     }
    }
    export default withRouter(Register);
+
+
