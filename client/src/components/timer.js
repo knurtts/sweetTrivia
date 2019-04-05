@@ -12,18 +12,19 @@ class CountDownTest extends Component {
   onComplete = () => {
     this.setState(
       {
-        completions: this.state.completions  
+        completions: this.state.completions 
       },
       () => console.log('completions', this.state.completions)
     )
   }
 
   render() {
+    
     return (
       <div>
         <CountDown
           key={this.state.completions}
-          seconds={20}
+          seconds={40}
           color="#FF5200"
           alpha={0.9}
           size={80}
