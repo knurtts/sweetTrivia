@@ -1,9 +1,6 @@
 import React, {Component} from "react";
 import "./FinalRank.css";
-import LogOut from "../Auth/LogOut";
 import axios from 'axios';
-
-
 
 class FinalRank extends Component {
 
@@ -11,12 +8,12 @@ class FinalRank extends Component {
         super(props)
         this.state = {
             users: []
-            // sortDirection: "descending",
-            // data: this.state.data.sort(descending)
+          
         };
     }
 
     componentDidMount() {
+
         axios.get("/api/leaderboards")
           .then(res => {
             const users = res.data;
@@ -24,21 +21,7 @@ class FinalRank extends Component {
           })
       }
 
-    //   sortData() {
-    //       if(this.state.sortDirection === "descending") {
-    //           this.setState({
-    //               sortDirection: "ascending",
-    //               data: this.props.score.sort(sortAscending)
-    //           });
-    //       } else {
-    //           this.setState({
-    //               sortDirection: "descending",
-    //               data: this.props.score.sort(sortDescending)
-    //           });
-    //       }
-    //   }
-
-    render() {
+     render() {
         return (<>
           <nav>
             <div className="nav-wrapper" >
@@ -71,17 +54,18 @@ class FinalRank extends Component {
                                     <table className="table table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
+                                                
                                                 <th>Total Score</th>
-                                                <th>Overall Rank</th>
+                                                <th>Name</th>
+                                                
                                             </tr>
                                         </thead>
                                         <tbody>
                                         {this.state.users.map(user =>
                                             <tr key={user.id}>
                                             <td>{user.score} </td>
-                                            <td>{user.User.firstname}{user.User.lastname}</td>
-                                            <td>{user.overallRank}</td>
+                                            <td>{user.User.firstname} {user.User.lastname}</td>
+                                            {/* <td>{user.overallRank}</td> */}
                                             </tr>
                                         )}
                                         </tbody>
@@ -91,25 +75,7 @@ class FinalRank extends Component {
                         </div>
 
 
-                        {/* GameRank Component */}
-                        <div className="card blue">
-                            <div className="card-content white-text">
-                                <span className="card-title">
-                                    <h5>Game Rank</h5>
-                                </span>
-                                <p>
-                                    6 not 7
-                                </p>
-                            </div>
-                        </div>
                         
-                        
-
-                        {/* <div className="card blue">
-                            <div className="card-content white-text" id="signoutCard">
-                            <a href class="waves-effect waves-light btn-large">Sign Out</a>
-                            </div>
-                        </div> */}
                     </div>
                 </div>
             </div>

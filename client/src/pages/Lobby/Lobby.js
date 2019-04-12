@@ -8,8 +8,10 @@ class Lobby extends Component {
       times: [],
       timeCount: '',
       gameID: '',
+      userID: '',
       count: [],
-    }
+    };
+
     timeFunction = (res) => {
         const times = res.data;
         this.setState({ times });
@@ -17,10 +19,10 @@ class Lobby extends Component {
 
       //Format the data returned form SQL in a MM/DD/YYY format with 24hr time
        const dateFormat = moment.utc(startTime).format('L HH:mm:ss');
-
+        
        //convert string to date time
        const newDate = new Date(dateFormat);
-
+      
        //convert date time to milliseconds
        const countDownDate = newDate.getTime();
         
@@ -52,7 +54,9 @@ class Lobby extends Component {
           if (distance < 0) {
             clearInterval(interval);
             console.log("EXPIRED");
-            this.props.history.push('/quiz')
+            //this.props.history.push('/quiz')
+            console.log('This is the user id: ' , this.state.userID);
+            this.props.history.push({pathname: '/quiz', state: {userID: this.state.userID}});
             this.setState({
                 timeCount:"Get Ready To Play!!"
                 
@@ -62,12 +66,13 @@ class Lobby extends Component {
     }
     componentDidMount() {
         const userID = this.props.location.state.userID
-        console.log('UserID' + userID);
-        
-        
+        this.setState({userID});
+        console.log('UserID' + userID); 
       axios.get('/api/starttime')
         .then(res => { 
           //this.timeFunction(res)
+          console.log(res.data[0].id);
+          
             this.setState({
                 timer: this.timeFunction(res),
                 gameID: res.data[0].id,  //Add Game ID to State    
@@ -77,12 +82,7 @@ class Lobby extends Component {
           console.log(error);
         })
          
-        /*axios.get("/api/playercount")
-        .then(res =>{
-            const count = res.data.count;
-            this.setState( {count} );
-            console.log(this.state.count);
-        })*/
+        
 
         //componentDidMount() {
              this.timer = setInterval(()=> {
@@ -100,15 +100,9 @@ class Lobby extends Component {
         
             }
           
-        
-    
-
-    
-
-        
+   
           
-    
-    
+ 
           
         render() {
             return (<>

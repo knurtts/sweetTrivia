@@ -4,10 +4,13 @@ import Question from '../components/Questions';
 import QuestionCount from '../components/QuestionCount';
 import AnswerOption from '../components/AnswerOption';
 import { CSSTransitionGroup } from 'react-transition-group';
+import CountDownTest from "../components/timer";
+
 
 function Quiz(props) {
     function renderAnswerOptions(key) {
         return (
+            
           <AnswerOption
             key={key.content}
             answerContent={key.content}
@@ -24,10 +27,14 @@ function Quiz(props) {
       component="div"
       transitionName="fade"
       transitionEnterTimeout={800}
-      transitionLeaveTimeout={500}
+      transitionLeaveTimeout={800}
       transitionAppear
-      transitionAppearTimeout={500}
+      transitionAppearTimeout={800}
     >
+
+        {/* Timer Component */}
+           <div><h1><CountDownTest /></h1></div>
+
         <div className="quiz">
           <QuestionCount
             counter={props.questionId}

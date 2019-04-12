@@ -48,16 +48,30 @@ class Register extends Component {
        //Add users UserID to User table in SQL
        axios.post('/api/newplayer/' + this.state.userID +'/' + this.state.gameID )
        .then(res => {
-        this.props.history.push({pathname: '/Lobby', state: {userID: this.state.userID}});
+         console.log('Check user ID' , this.state.userID);
+         
+        this.props.history.push({pathname: '/lobby', state: {userID: this.state.userID}});
+      })
+      .catch((error) => {
+        this.setState({ error: error });
       });
-     });  
+
+     })
+     .catch((error) => {
+      this.setState({ error: error });
     });
-        //Redirect to Lobby page
-        //this.props.history.push( '/Lobby' );
-        
-      
-    })    
-  };
+
+    })
+    .catch((error) => {
+      this.setState({ error: error });
+    });
+ 
+    })
+    .catch((error) => {
+      this.setState({ error: error });
+    });
+  
+  }
   render() {
     const { email, password, firstName, lastName, error } = this.state;
     return (
@@ -70,8 +84,7 @@ class Register extends Component {
 
     </ul>
   </div>
-        </nav>
-        <br/> 
+        </nav> 
         <div class="container">
         <div className = "register"> 
             <form onSubmit={this.handleSubmit}>
@@ -115,3 +128,5 @@ class Register extends Component {
     }
    }
    export default withRouter(Register);
+
+

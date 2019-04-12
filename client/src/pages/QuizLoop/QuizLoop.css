@@ -2,6 +2,16 @@ body {
     
   margin: 0;
   padding: 0;
+  background-image: url("../../assets/images/Helmet.JPG");
+    background-size: cover;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background-position: center;
+}
+
+div {
+    
 }
 .container {
     position: relative;
@@ -9,7 +19,9 @@ body {
     margin: 0 auto;
     /* background: #fff; */
     border-radius: 3px;
-  }
+}
+
+
   
   @media (min-width: 769px) {
     .container {
@@ -23,6 +35,11 @@ body {
   /* Result Component */
   .result {
     padding: 1.5rem 2.5rem;
+    color:#FF5200;
+    background-color: #ffffff;
+    opacity: 0.8;
+    filter: alpha(opacity=60);
+
   }
   
   /* Quiz Component */
@@ -30,18 +47,24 @@ body {
     margin: 0;
     padding: 0;
     list-style: none;
+    
   }
   
   /* QuestionCount Component */
   .questionCount {
     padding: 1.5rem 2.5rem 0;
     font-size: 14px;
+    color:#FF5200;
   }
   
   /* Question Component */
   .question {
     margin: 0;
     padding: 0.5rem 2.5rem 1.5rem 2.5rem;
+    color:#FF5200;
+    background-color: #ffffff;
+    opacity: 0.8;
+    filter: alpha(opacity=60);
   }
   
   /* AnswerOption Component */
@@ -50,7 +73,7 @@ body {
   }
   
   .answerOption:hover {
-    background-color: #eefbfe;
+    background-color: #0A2343;
   }
   
   .radioCustomButton {
@@ -73,6 +96,9 @@ body {
     padding: 1.5rem 2.5rem 1.5rem 5rem;
     font-size: 16px;
     line-height: 1.5;
+    color: #FF5200;
+    opacity: 0.9;
+
   }
   
   .radioCustomButton ~ .radioCustomLabel:before {

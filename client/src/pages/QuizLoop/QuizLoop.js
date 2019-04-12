@@ -5,6 +5,7 @@ import io from "socket.io-client";
 import quizQuestions from '../../api/quizQuestions';
 import Quiz from "../../components/Quiz";
 import Result from "../../components/Result";
+import Answered from "./Answered";
 
 // const socketUrl = "https://gamedaytrivia.herokuapp.com";
 const socketUrl = "http://localhost:3001";
@@ -15,6 +16,7 @@ class QuizLoop extends Component {
         super(props);
 
         this.state = {
+            userID: '',
             socket: null,
             counter: 0,
           questionId: 1,
@@ -22,8 +24,9 @@ class QuizLoop extends Component {
           answerOptions: [],
           answer: '',
           answersCount: {
-            right: 0,
-            wrong: 0
+            All: 0,
+            Some: 0,
+            None: 0
           },
           result: ''
         };
@@ -42,6 +45,10 @@ class QuizLoop extends Component {
     }
 
     componentDidMount() {
+      const userID = this.props.location.state.userID
+      this.setState({userID});
+      console.log('userID' , userID);
+      
         const { socket } = this.state;
 
         socket.emit("userConnected")
@@ -151,10 +158,21 @@ class QuizLoop extends Component {
       }
     
       setResults(result) {
-        if (result.length === 1) {
-          this.setState({ result: result[0] });
+        if (result.length == 1) {
+          this.setState({ result: result[0] }, ()=>{
+
+            axios.post("/api/score/"+this.state.answersCount.All+"/"+this.state.userID)
+              .then(data => {
+                console.log("score set");
+              });
+
+              setTimeout(() => {
+                this.props.history.push({pathname: '/finalrank', state: {userID: this.state.userID}});
+              }, 5000);
+          });
+          
         } else {
-          this.setState({ result: 'Undetermined' });
+          this.setState({ result: 'None' });
         }
       }
       renderQuiz() {
@@ -171,8 +189,11 @@ class QuizLoop extends Component {
       }
     
       renderResult() {
-        return <Result quizResult={this.state.result} />;
-      }
+        return <Result quizResult={this.state.result}  />
+        
+            
+        };
+      
 
     render() {
         return (<>
@@ -181,7 +202,9 @@ class QuizLoop extends Component {
             
   </div>
         </nav>
-        
+
+           
+        {/*Pulls in the quiz and answer components */}
         {this.state.result ? this.renderResult() : this.renderQuiz()}  
 
             

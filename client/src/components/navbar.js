@@ -11,7 +11,7 @@ class Navbar extends Component {
       <nav>
               <div className="nav-wrapper" >
                   <a href="#" className="brand-logo" center></a>
-                  <a href="#" className="brand-logo" center>Home</a>
+                  <a href="#" className="brand-logo" center>Home2</a>
 
               </div>
           </nav>
