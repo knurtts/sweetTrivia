@@ -12,6 +12,7 @@ import FinalRank from "./pages/FinalRank/FinalRank";
 import firebase from './firebase';
 import Navigation from './Navigation';
 import ProtectedRoute from './ProtectedRoute';
+import Admin from "./pages/Admin/Admin";
 
 
 class App extends Component {
@@ -47,6 +48,7 @@ class App extends Component {
           <Route exact path="/correctScore" component={CorrectScore} />
           <Route exact path="/answered" component={Answered} />
           <Route exact path="/finalRank" component={FinalRank} />
+          <Route exact path="/admin" component={Admin} />
           {/* <Route authenticated={this.props.authenticated} path="/lobby" component={() => this.props.authenticated ? <Lobby /> : <Login />} /> */}
           {/* <Route authenticated={this.props.authenticated} path="/quiz" component={QuizLoop} /> */}
           {/* <ProtectedRoute authenticated={this.props.authenticated} path="/answered" component={Answered} /> */}
