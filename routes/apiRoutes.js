@@ -124,7 +124,7 @@ module.exports = (app) => {
     //make new game
     app.post("/api/newgame", (req, res) => {
         db.Game.create({
-            gameDate: Date(),
+            gameDate: req.body.starting,
             active: true
         }).then(data => res.json(data))
             .catch(err => console.log(err));
