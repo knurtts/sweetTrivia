@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import "./Admin.css";
 import io from "socket.io-client";
 import axios from "axios";
-// import DateTimePicker from "react-datetime-picker";
-// import DateTimePicker from "react-datetime-picker/dist/entry.nostyle";
-import DateTime from "react-datetime";
+import "rc-time-picker/assets/index.css";
+import moment from "moment";
+import TimePicker from "rc-time-picker";
 
+const showSecond = true;
+const str = showSecond ? "HH:mm:ss" : "HH:mm";
 
 
 // const socketUrl = "https://gamedaytrivia.herokuapp.com";
@@ -36,14 +38,18 @@ export default class Admin extends Component {
 
     render() {
         return(
-            <div className="container">
+            <div className="container" id="adminContainer">
             <div className="row">
-                {/* <DateTimePicker 
-                    value={this.state.date}
-                    onChange={this.startTime}
-                /> */}
-                <DateTime />
-            </div>
+                <div className="col m6">Column 1</div>
+                <div className="col m6">
+                    <TimePicker
+                        style={{ width: 100 }}
+                        showSecond={showSecond}
+                        defaultValue={moment()}
+                        className="xxx"
+                        // onChange={onChange}
+                    />
+                </div>
 
                 {/* <div className="row">
                     <div className="input-field">
@@ -52,8 +58,8 @@ export default class Admin extends Component {
                             <button className="waves-effect waves-light btn-large">Set Start Time</button>
                         </form>
                     </div>
-
-                </div> */}
+                */}
+                </div> 
             </div>
         );
     }
